@@ -1,0 +1,33 @@
+{
+    "Segment": [
+        "A-segment(Minicompact)",
+		"B-segment(Subcompact)",
+		"C-segment(Compact)",
+		"D-segment(Mid-size)",
+		"E-segment(Full-size)",
+		"F-segment(Full-size luxury)",
+		"S-segment(Sports/Coupe)",
+		"M-segment(MPV)",
+		"J-segment(SUV)"
+    ],
+    "Manufacturer": [
+        "Acura", "Aion", "Aito", "Alfa Romeo", "Audi",
+        "Bentley", "BMW","BYD", 
+        "Cadillac", "Changan", "Chevrolet", "Chrysler", "Citroën",
+        "Daihatsu", "Datsun", "Denso Ten", "Dodge",
+        "Fiat", "Ford",
+        "Genesis", "GWM",
+        "Honda", "Haval", "Hyundai",
+        "Infiniti", "Isuzu",
+        "Jaguar", "Jeep",
+        "Kia",
+        "Lexus",
+        "Mazda", "Mercedes-Benz", "MG", "Mini", "Mitsubishi",
+        "Neta", "NIO", "Nissan",
+        "SAIC", "Subaru", "Suzuki",
+        "Tata", "Toyota", "Tesla",
+        "Volkswagen", "Volvo",
+        "Wuling",
+        "Xiaomi"
+    ]
+}

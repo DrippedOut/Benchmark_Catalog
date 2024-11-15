@@ -1,0 +1,1633 @@
+{
+    "General": [
+        {
+            "label": "Model",
+            "name": "model",
+            "description": "Car model name",
+            "fieldType": "text",
+            "required": true,
+            "icon": "FaCarSide"
+        },
+        {
+            "label": "Manufacturer",
+            "name": "manufacturer",
+            "description": "Name of the car maker",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaBuilding"
+        },
+        {
+            "label": "Year",
+            "name": "year",
+            "description": "Year that the vehicle is recorded",
+            "fieldType": "text",
+            "required": true,
+            "icon": "FaCalendar"
+        },
+        {
+            "label": "Display Size",
+            "name": "displaySize",
+            "description": "Display size",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaDesktop"
+        },
+        {
+            "label": "Display Type",
+            "name": "displayType",
+            "description": "Display Type",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaTv"
+        },
+        {
+            "label": "SoC",
+            "name": "soc",
+            "description": "SoC platform",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaMicrochip"
+        },
+        {
+            "label": "Operating System",
+            "name": "os",
+            "description": "Operating System",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaWindows"
+        },
+        {
+            "label": "RAM",
+            "name": "ram",
+            "description": "RAM size",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaMemory"
+        },
+        {
+            "label": "ROM",
+            "name": "rom",
+            "description": "ROM size",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaHdd"
+        },
+        {
+            "label": "DMIPS",
+            "name": "dmips",
+            "description": "Total DMIPS",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaCogs"
+        },
+        {
+            "label": "Display Frame Rate",
+            "name": "displayFrameRate",
+            "description": "Display frame rate",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaVideo"
+        },
+        {
+            "label": "Resolution",
+            "name": "resolution",
+            "description": "Resolution of display",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaExpand"
+        },
+        {
+            "label": "Aspect Ratio",
+            "name": "aspectRatio",
+            "description": "Aspect ratio",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaArrowsAltH"
+        },
+        {
+            "label": "Car Segment",
+            "name": "carSegment",
+            "description": "Car classification",
+            "fieldType": "dropdown",
+            "options": [
+                "A-segment(Minicompact)",
+                "B-segment(Subcompact)",
+                "C-segment(Compact)",
+                "D-segment(Mid-size)",
+                "E-segment(Full-size)",
+                "F-segment(Full-size luxury)",
+                "S-segment(Sports/Coupe)",
+                "M-segment(MPV)",
+                "J-segment(SUV)"
+            ],
+            "required": false,
+            "icon": "FaCarSide"
+        }
+    ],
+    "Tuner": [
+        {
+            "label": "FM",
+            "name": "fm",
+            "description": "FM frequency range",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaBroadcastTower"
+        },
+        {
+            "label": "AM",
+            "name": "am",
+            "description": "AM frequency range",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaBroadcastTower"
+        },
+        {
+            "label": "Play/Pause",
+            "name": "playPause",
+            "description": "Play/Pause button",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaPlay"
+        },
+        {
+            "label": "Volume",
+            "name": "volume",
+            "description": "Change volume +/- button to change sound",
+            "fieldType": "dropdown",
+            "options": [
+                "Soft Button",
+                "Hard Button"
+            ],
+            "required": false,
+            "icon": "FaVolumeUp"
+        },
+        {
+            "label": "Step Up / Step Down",
+            "name": "stepUpStepDown",
+            "description": "Increase / decrease frequency one step",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaArrowsAltV"
+        },
+        {
+            "label": "Seek Up / Seek Down",
+            "name": "seekUpSeekDown",
+            "description": "Short press to increase / decrease frequency",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaArrowsAltV"
+        },
+        {
+            "label": "Next / Previous",
+            "name": "nextPrevious",
+            "description": "Change to next / previous preset",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaArrowsAltH"
+        },
+        {
+            "label": "Preset",
+            "name": "preset",
+            "description": "User can preset frequency to channel bar",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaListUl"
+        },
+        {
+            "label": "Scan",
+            "name": "scan",
+            "description": "Search all broadcasting by auto seek up",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaSearch"
+        },
+        {
+            "label": "Favorite",
+            "name": "favorite",
+            "description": "Add station to favorite list",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaStar"
+        },
+        {
+            "label": "Auto Preset",
+            "name": "autoPreset",
+            "description": "FM will auto preset frequency when scanning",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaCog"
+        },
+        {
+            "label": "Slide Bar",
+            "name": "slideBar",
+            "description": "Slide to side list",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaArrowsAltH"
+        },
+        {
+            "label": "RDS",
+            "name": "rds",
+            "description": "Radio data system consisting of AF, radio text, and traffic information",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaBroadcastTower"
+        },
+        {
+            "label": "DAB",
+            "name": "dab",
+            "description": "Digital audio broadcasting to improve radio signal and reduce noise",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaSignal"
+        }
+    ],
+    "USBMediaPlayback": [
+        {
+            "label": "USB Type A",
+            "name": "usbTypeA",
+            "description": "USB Type A connection",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaUsb"
+        },
+        {
+            "label": "USB Type C",
+            "name": "usbTypeC",
+            "description": "USB Type C connection",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaUsb"
+        },
+        {
+            "label": "Audio File Format Support",
+            "name": "audioFileFormatSupport",
+            "description": "DA can open or preview these file formats",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaMusic"
+        },
+        {
+            "label": "Video File Format Support",
+            "name": "videoFileFormatSupport",
+            "description": "DA can open or preview these file formats",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaVideo"
+        },
+        {
+            "label": "Document File Format Support",
+            "name": "documentFileFormatSupport",
+            "description": "DA can open or preview these file formats",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaFileAlt"
+        },
+        {
+            "label": "Photo File Format Support",
+            "name": "photoFileFormatSupport",
+            "description": "DA can open or preview these file formats",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaFileImage"
+        },
+        {
+            "label": "Folder Name",
+            "name": "folderName",
+            "description": "Display the folder name of the currently playing file",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaFolder"
+        },
+        {
+            "label": "Track Name",
+            "name": "trackName",
+            "description": "Display the song name of the currently playing file",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaMusic"
+        },
+        {
+            "label": "Artist Name",
+            "name": "artistName",
+            "description": "Display the artist name of the currently playing file",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaUserCircle"
+        },
+        {
+            "label": "Album Name",
+            "name": "albumName",
+            "description": "Display the album name of the currently playing file",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaCompactDisc"
+        },
+        {
+            "label": "Track Number",
+            "name": "trackNumber",
+            "description": "Display the number of files and folders being played",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaHashtag"
+        },
+        {
+            "label": "Playback Time",
+            "name": "playbackTime",
+            "description": "Actual playback time of the currently playing file",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaClock"
+        },
+        {
+            "label": "Source Name",
+            "name": "sourceName",
+            "description": "Display the source title name",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaTag"
+        },
+        {
+            "label": "Folder and File List",
+            "name": "folderFileList",
+            "description": "View content in the list of folders and files",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaFileAlt"
+        },
+        {
+            "label": "Play / Pause",
+            "name": "playPause",
+            "description": "Play and pause current content",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaPlay"
+        },
+        {
+            "label": "Next / Previous",
+            "name": "nextPrevious",
+            "description": "Play next / previous content",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaStepForward"
+        },
+        {
+            "label": "Fast Forward / Rewind",
+            "name": "fastForwardRewind",
+            "description": "Long press for fast forward / rewind",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaFastForward"
+        },
+        {
+            "label": "Slide Bar",
+            "name": "slideBar",
+            "description": "Drag and slide to time search or jump to specific point",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaArrowsAltH"
+        },
+        {
+            "label": "Repeat",
+            "name": "repeat",
+            "description": "Repeat 1 content or all content",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaArrowsRotate"
+        },
+        {
+            "label": "Folder Repeat",
+            "name": "folderRepeat",
+            "description": "Repeat all content in selected folder",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaFolderOpen"
+        },
+        {
+            "label": "Random",
+            "name": "random",
+            "description": "Random content",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaRandom"
+        },
+        {
+            "label": "Folder Random",
+            "name": "folderRandom",
+            "description": "Random content in selected folder",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaFolderOpen"
+        },
+        {
+            "label": "Wide Screen",
+            "name": "wideScreen",
+            "description": "Switch to wide screen mode on video content",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaTv"
+        },
+        {
+            "label": "Full Screen",
+            "name": "fullScreen",
+            "description": "Switch to full screen mode on video content",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaExpand"
+        }
+    ],
+    "Bluetooth": {
+        "Handsfree": [
+            {
+                "label": "Synchronization",
+                "name": "synchronization",
+                "description": "Sync contact of phone book",
+                "fieldType": "dropdown",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "required": false,
+                "icon": "FaSync"
+            },
+            {
+                "label": "Steering Accept Call",
+                "name": "steeringAcceptCall",
+                "description": "Accept call by steering wheel",
+                "fieldType": "dropdown",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "required": false,
+                "icon": "FaPhone"
+            },
+            {
+                "label": "Steering Call Out",
+                "name": "steeringCallOut",
+                "description": "Call out by steering wheel",
+                "fieldType": "dropdown",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "required": false,
+                "icon": "FaPhoneAlt"
+            },
+            {
+                "label": "Recent Call",
+                "name": "recentCall",
+                "description": "Show recent call screen",
+                "fieldType": "dropdown",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "required": false,
+                "icon": "FaClock"
+            },
+            {
+                "label": "History",
+                "name": "history",
+                "description": "Show history call screen",
+                "fieldType": "dropdown",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "required": false,
+                "icon": "FaHistory"
+            },
+            {
+                "label": "Contact",
+                "name": "contact",
+                "description": "Show contact screen",
+                "fieldType": "dropdown",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "required": false,
+                "icon": "FaAddressBook"
+            },
+            {
+                "label": "Update Contact",
+                "name": "updateContact",
+                "description": "Have setting to update contact from smartphone",
+                "fieldType": "text",
+                "required": false,
+                "icon": "FaSyncAlt"
+            }
+        ],
+        "Media": [
+            {
+                "label": "Play / Pause",
+                "name": "playPause",
+                "description": "Play / pause current music",
+                "fieldType": "dropdown",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "required": false,
+                "icon": "FaPause"
+            },
+            {
+                "label": "Next / Previous",
+                "name": "nextPrevious",
+                "description": "Play next / previous music",
+                "fieldType": "dropdown",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "required": false,
+                "icon": "FaStepForward"
+            },
+            {
+                "label": "Slide Bar",
+                "name": "slideBar",
+                "description": "Drag and slide to time search or jump to specific time",
+                "fieldType": "dropdown",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "required": false,
+                "icon": "FaArrowsAltH"
+            },
+            {
+                "label": "Change Source",
+                "name": "changeSource",
+                "description": "Change source of media",
+                "fieldType": "text",
+                "required": false,
+                "icon": "FaExchangeAlt"
+            },
+            {
+                "label": "Library",
+                "name": "library",
+                "description": "Play media on Library",
+                "fieldType": "dropdown",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "required": false,
+                "icon": "FaBook"
+            },
+            {
+                "label": "Spotify",
+                "name": "spotify",
+                "description": "Play media on Spotify",
+                "fieldType": "dropdown",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "required": false,
+                "icon": "FaSpotify"
+            },
+            {
+                "label": "YouTube",
+                "name": "youtube",
+                "description": "Play media on YouTube",
+                "fieldType": "dropdown",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "required": false,
+                "icon": "FaYoutube"
+            },
+            {
+                "label": "Apple Music",
+                "name": "appleMusic",
+                "description": "Play media on Apple Music",
+                "fieldType": "dropdown",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "required": false,
+                "icon": "FaApple"
+            },
+            {
+                "label": "Build In Music Application",
+                "name": "buildInMusicApplication",
+                "description": "Built-in music application",
+                "fieldType": "dropdown",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "required": false,
+                "icon": "FaMusic"
+            }
+        ],
+        "Technology": [
+            {
+                "label": "Version",
+                "name": "version",
+                "description": "Bluetooth technology version",
+                "fieldType": "text",
+                "required": false,
+                "icon": "FaBluetooth"
+            },
+            {
+                "label": "Profile",
+                "name": "profile",
+                "description": "Bluetooth profile",
+                "fieldType": "text",
+                "required": false,
+                "icon": "FaIdBadge"
+            }
+        ]
+    },
+    "Camera": [
+        {
+            "label": "Rear Camera",
+            "name": "rearCamera",
+            "description": "Normal rear camera",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaCamera"
+        },
+        {
+            "label": "PVM Camera",
+            "name": "pvmCamera",
+            "description": "Panoramic view mode with 4+ cameras",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaCubes"
+        },
+        {
+            "label": "PVM 2D",
+            "name": "pvm2D",
+            "description": "Display real-time video from different angles in 2D",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaVideo"
+        },
+        {
+            "label": "PVM 3D",
+            "name": "pvm3D",
+            "description": "Display real-time video from different angles in 3D",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaVideo"
+        },
+        {
+            "label": "PVM Icon",
+            "name": "pvmIcon",
+            "description": "Display front view camera PVM 360 button",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaCameraRetro"
+        },
+        {
+            "label": "PVM Setting",
+            "name": "pvmSetting",
+            "description": "Set the turning assistant display and assistance lines",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaCogs"
+        },
+        {
+            "label": "Dynamic Guideline",
+            "name": "dynamicGuideline",
+            "description": "Displays dynamic guideline in real-time as the view of the car, with lines that depend on the wheel's direction",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaArrowsAltH"
+        },
+        {
+            "label": "Static Guideline",
+            "name": "staticGuideline",
+            "description": "Displays static guideline in real-time as the view of the car, with lines that depend on the straight direction",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaArrowsAltV"
+        },
+        {
+            "label": "Dynamic + Static Guideline",
+            "name": "dynamicStaticGuideline",
+            "description": "Displays both dynamic and static guidelines in real-time, one depending on the wheel's direction and another for the straight direction",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "IoAppsOutline"
+        },
+        {
+            "label": "BSD (Blind Spot Detection)",
+            "name": "bsd",
+            "description": "Sensor attached to the right corner and left behind the car area under the bumper to detect blind spots during driving",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaEye"
+        },
+        {
+            "label": "RCTA (Rear Cross Traffic Alert)",
+            "name": "rcta",
+            "description": "Radar system that warns when cars pass in the blind spot while reversing",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaCarCrash"
+        },
+        {
+            "label": "Back Sensor",
+            "name": "backSensor",
+            "description": "Radar system that warns when the car is close to an object",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaBroadcastTower"
+        },
+        {
+            "label": "Lane Watch Camera",
+            "name": "laneWatchCamera",
+            "description": "Lane watch camera for monitoring the lane when changing lanes",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaRoad"
+        }
+    ],
+    "VoiceRecognition": [
+        {
+            "label": "Steering Wheel VR Button",
+            "name": "steeringWheelVrButton",
+            "description": "Can connect with the voice button on the steering wheel",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaMicrophoneAlt"
+        },
+        {
+            "label": "DA VR Button",
+            "name": "daVrButton",
+            "description": "Voice recognition button on DA",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaMicrophone"
+        },
+        {
+            "label": "Wake Up Word",
+            "name": "wakeUpWord",
+            "description": "Wake up word available on DA",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaBullhorn"
+        },
+        {
+            "label": "Default Language",
+            "name": "defaultLanguage",
+            "description": "Default language of VR",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaLanguage"
+        },
+        {
+            "label": "Change Voice Input Language",
+            "name": "changeVoiceInputLanguage",
+            "description": "Change voice input language",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaExchangeAlt"
+        },
+        {
+            "label": "Change Voice Output Sound",
+            "name": "changeVoiceOutputSound",
+            "description": "Change voice output sound",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaVolumeUp"
+        }
+    ],
+    "Carplay": [
+        {
+            "label": "Wire",
+            "name": "wire",
+            "description": "Connect Carplay via cable",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaUsb"
+        },
+        {
+            "label": "Wireless",
+            "name": "wireless",
+            "description": "Connect Carplay via Wi-Fi",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaWifi"
+        },
+        {
+            "label": "Day / Night Mode",
+            "name": "dayNightMode",
+            "description": "Day / night mode support type",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaAdjust"
+        },
+        {
+            "label": "Separate Volume Control",
+            "name": "separateVolumeControl",
+            "description": "Control volume separately for each mode (Call / Voice / Media)",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaVolumeUp"
+        },
+        {
+            "label": "Touch Level",
+            "name": "touchLevel",
+            "description": "High fidelity or Low fidelity touch response",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaHandPointer"
+        },
+        {
+            "label": "Entry Point",
+            "name": "entryPoint",
+            "description": "Entry point for Carplay",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaSignInAlt"
+        },
+        {
+            "label": "Enhance Siri",
+            "name": "enhanceSiri",
+            "description": "Support enhanced Siri features",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaMicrophoneAlt"
+        }
+    ],
+    "AndroidAuto": [
+        {
+            "label": "Wire",
+            "name": "wire",
+            "description": "Connect Android Auto via cable",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaUsb"
+        },
+        {
+            "label": "Wireless",
+            "name": "wireless",
+            "description": "Connect Android Auto via Wi-Fi",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaWifi"
+        },
+        {
+            "label": "Day / Night Mode",
+            "name": "dayNightMode",
+            "description": "Day / night mode support type",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaAdjust"
+        },
+        {
+            "label": "Video Config 60FPS",
+            "name": "videoConfig60fps",
+            "description": "Use PCTS V59",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaVideo"
+        },
+        {
+            "label": "Additional Depth",
+            "name": "additionalDepth",
+            "description": "Use PCTS V59 decoder_additional_depth must be <=1",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaLayerGroup"
+        },
+        {
+            "label": "Separate Volume Control",
+            "name": "separateVolumeControl",
+            "description": "Control volume separately for each mode (Call / VR/ Guidance)",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaVolumeUp"
+        },
+        {
+            "label": "UI Layout",
+            "name": "uiLayout",
+            "description": "Full Screen / Blended UI / Resizable",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaDesktop"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional features or options for Android Auto",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaEllipsisH"
+        }
+    ],
+    "Weblink": [
+        {
+            "label": "Wire",
+            "name": "wire",
+            "description": "Connect Weblink via cable",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaUsb"
+        },
+        {
+            "label": "Wireless",
+            "name": "wireless",
+            "description": "Connect Weblink via Wi-Fi",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaWifi"
+        },
+        {
+            "label": "Application",
+            "name": "application",
+            "description": "Applications available in Weblink (YouTube, browser, etc.)",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaAppStoreIos"
+        },
+        {
+            "label": "Separate Volume Control",
+            "name": "separateVolumeControl",
+            "description": "Control volume separately for each mode (Call / VR/ Guidance)",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaVolumeUp"
+        }
+    ],
+    "OtherConnections": [
+        {
+            "label": "Wi-Fi Connect",
+            "name": "wifiConnect",
+            "description": "Can connect Wi-Fi",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaWifi"
+        },
+        {
+            "label": "Wi-Fi Supported",
+            "name": "wifiSupported",
+            "description": "Wi-Fi supported standards",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaSignal"
+        },
+        {
+            "label": "Wi-Fi Security",
+            "name": "wifiSecurity",
+            "description": "Wi-Fi security protocols",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaLock"
+        },
+        {
+            "label": "Miracast",
+            "name": "miracast",
+            "description": "Miracast functions enable Android smartphones to stream content (Video, Music, Etc.)",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaMobileAlt"
+        },
+        {
+            "label": "Browser",
+            "name": "browser",
+            "description": "Can use the web browser on this product",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaGlobe"
+        },
+        {
+            "label": "NFC",
+            "name": "nfc",
+            "description": "Can connect with Bluetooth and Wi-Fi automatically. Just tap the phone you want to connect to the NFC screen.",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaMobile"
+        },
+        {
+            "label": "Balance Checking",
+            "name": "balanceChecking",
+            "description": "E-money card balance check can only be used for Indonesian models.",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaMoneyBillWave"
+        }
+    ],
+    "GeneralSetting": [
+        {
+            "label": "Profile",
+            "name": "profile",
+            "description": "Support multiple profile feature",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaUserCircle"
+        },
+        {
+            "label": "Language",
+            "name": "language",
+            "description": "Display language supported",
+            "fieldType": "textarea",
+            "required": false,
+            "icon": "FaLanguage"
+        },
+        {
+            "label": "Personal Center",
+            "name": "personalCenter",
+            "description": "Application connect to car",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaUser"
+        },
+        {
+            "label": "Native Navigation",
+            "name": "nativeNavigation",
+            "description": "Built-in navigation in DA",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaMapMarkedAlt"
+        },
+        {
+            "label": "Auto Clock",
+            "name": "autoClock",
+            "description": "Support automatic time zone",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaClock"
+        }
+    ],
+    "DisplaySetting": [
+        {
+            "label": "ON/OFF Opening Animation",
+            "name": "onOffOpeningAnimation",
+            "description": "Can turn ON/OFF opening animation",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaPlayCircle"
+        },
+        {
+            "label": "LCD Contrast & Brightness Control",
+            "name": "lcdContrastBrightnessControl",
+            "description": "LCD Contrast & Brightness control",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaAdjust"
+        },
+        {
+            "label": "Display ON/OFF",
+            "name": "displayOnOff",
+            "description": "Display ON/OFF",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaPowerOff"
+        },
+        {
+            "label": "Wallpaper",
+            "name": "wallpaper",
+            "description": "Change background wallpaper",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaImage"
+        },
+        {
+            "label": "Theme",
+            "name": "theme",
+            "description": "Change theme on DA",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaPalette"
+        },
+        {
+            "label": "Auto Dimmer",
+            "name": "autoDimmer",
+            "description": "Auto dimmer",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaLightbulb"
+        },
+        {
+            "label": "Changeable Widget",
+            "name": "changeableWidget",
+            "description": "Have changeable widget",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaExchangeAlt"
+        },
+        {
+            "label": "Moveable Widget",
+            "name": "moveableWidget",
+            "description": "Have moveable widget",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaArrowsAlt"
+        },
+        {
+            "label": "Split Screen",
+            "name": "splitScreen",
+            "description": "Users can customize function display to view two functions simultaneously on a split screen",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaColumns"
+        }
+    ],
+    "SoundSetting": [
+        {
+            "label": "Surround Sound",
+            "name": "surroundSound",
+            "description": "Support and adjustable surround sound",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaVolumeUp"
+        },
+        {
+            "label": "Base Enhancer",
+            "name": "baseEnhancer",
+            "description": "Can adjust bass to be more powerful and extended",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaMusic"
+        },
+        {
+            "label": "Equalizer",
+            "name": "equalizer",
+            "description": "Support equalizer adjustment",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaSlidersH"
+        },
+        {
+            "label": "Balance Sound",
+            "name": "balanceSound",
+            "description": "Can adjust the balance settings to achieve an ideal listening environment in all occupied seats",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaBalanceScale"
+        },
+        {
+            "label": "Automatic Sound Level Control",
+            "name": "automaticSoundLevelControl",
+            "description": "While driving, noise in the car changes according to the driving speed automatically",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaCar"
+        },
+        {
+            "label": "Separate Volume Control",
+            "name": "separateVolumeControl",
+            "description": "Support separate volume setting",
+            "fieldType": "text",
+            "required": false,
+            "icon": "FaVolumeUp"
+        }
+    ],
+    "OtherFunctions": [
+        {
+            "label": "Vehicle Animation",
+            "name": "vehicleAnimation",
+            "description": "Can choose the vehicle animation to be shown",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaCar"
+        },
+        {
+            "label": "Vehicle Info",
+            "name": "vehicleInfo",
+            "description": "Show vehicle information",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaInfoCircle"
+        },
+        {
+            "label": "Vehicle Setting",
+            "name": "vehicleSetting",
+            "description": "Can set vehicle settings directly with DA (AC, Lamp, etc.)",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaCogs"
+        },
+        {
+            "label": "ADAS",
+            "name": "adas",
+            "description": "Can set ADAS on/off notifications",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaBell"
+        },
+        {
+            "label": "Altimeter",
+            "name": "altimeter",
+            "description": "Can show Pitch, Roll, Sea level or compass",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaMountain"
+        },
+        {
+            "label": "Battery Level",
+            "name": "batteryLevel",
+            "description": "Can show battery level (xx.xV)",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaBatteryThreeQuarters"
+        },
+        {
+            "label": "Special Day",
+            "name": "specialDay",
+            "description": "Can set a special day",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaCalendarDay"
+        },
+        {
+            "label": "HUD",
+            "name": "hud",
+            "description": "Can show the HUD",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaTachometerAlt"
+        },
+        {
+            "label": "Relax Mode",
+            "name": "relaxMode",
+            "description": "Can set a Relax Mode",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaBed"
+        },
+        {
+            "label": "OTA",
+            "name": "ota",
+            "description": "Over the air software update",
+            "fieldType": "dropdown",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "required": false,
+            "icon": "FaCloudDownloadAlt"
+        }
+    ],
+    "HighlightFunction": [
+        {
+            "label": "Highlight Function",
+            "name": "highlightFunction",
+            "description": "Highlight function of each model",
+            "fieldType": "textarea",
+            "required": false,
+            "icon": "FaHighlighter"
+        }
+    ]
+}
