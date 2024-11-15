@@ -1,17 +1,28 @@
-import React, { useEffect } from 'react'
+import React, {useEffect} from 'react'
 import { FaListUl } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
+import { Button } from '../ui/button';
+import { Link } from "react-router-dom";
 
-function CompareList( { list } ) {
+function CompareList( { compareList , itemRemoved } ) {
+    // const goTo = useNavigate();
+
+    if (compareList.length < 1) return null;
     
     useEffect(() => {
-        console.log(list)
-    }, [ list ]);
+        if (compareList && compareList.length > 0) {
+            console.log(compareList)   
+        }
+    }, [compareList]);
 
-    if (list.length < 1) return null;
+    const removeItem = (item) => {
+        itemRemoved(item);
+        console.log("REMOVE ", item);
+    }
 
-    const onRemove = () => {
-
+    const onCompare = () => {
+        console.log("onCompare init")
+        goTo('/compare', { state: { compareList } });
     }
 
   return (
@@ -23,8 +34,8 @@ function CompareList( { list } ) {
                 <span className="text-2xl font-semibold my-4">Compare List</span>
             </h2>
             <div class="divide-y divide-gray-200">
-                {list.map((item, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 rounded-xl transition-all hover:bg-red-700 group cursor-pointer">
+                {compareList.map((item, index) => (
+                    <div key={index} className="flex items-center justify-between p-3 rounded-xl transition-all hover:bg-red-500/50 group cursor-pointer"  onClick={() => removeItem(item.General)}>
                         <div className="flex items-center gap-x-3">
                             <img
                                 src={item?.images[0]?.imageURL}
@@ -42,9 +53,16 @@ function CompareList( { list } ) {
                         <h6 className="block font-sans text-base font-semibold leading-relaxed tracking-normal text-blue-gray-900 antialiased">
                             {item?.General?.year}
                         </h6>
-                        <FaTrash className="opacity-0 group-hover:opacity-100 absolute right-32 text-4xl text-red-500" onClick={onRemove}/>
+                        <span className="opacity-0 group-hover:opacity-100 absolute right-[45%] text-4xl text-red-500">
+                            <FaTrash/>
+                        </span>
                     </div>
                 ))}
+                <div className="flex justify-end pt-10">
+                    <Link to="/compare" state={{ compareList }} className='w-full'>
+                        <Button className='w-full' onClick={() => onCompare}>COMPARE</Button>
+                    </Link>
+                </div>
             </div>
         </div>
     </div>

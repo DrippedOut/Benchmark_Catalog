@@ -1,10 +1,14 @@
 import React from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { useLocation } from 'react-router-dom';
 import {Accordion,AccordionItem,AccordionTrigger,AccordionContent} from "@/components/ui/accordion";
 import CompareSlider from "./components/compare/CompareSlider";
 
 function Compare() {
+	const location = useLocation();
+	const compareList = location.state?.compareList || [];
+
 	return (
 		<div>
 			<Header />
@@ -14,7 +18,7 @@ function Compare() {
 				</div>
 
 				<div className="flex justify-center">
-					<CompareSlider />
+					{(compareList.length > 1) ? <CompareSlider list={compareList}/>: null}
 				</div>
 
 				<Accordion className="shadow-lg rounded-xl" collapsible="true" type="multiple">

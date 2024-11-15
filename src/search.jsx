@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import Header from './components/Header'
-import FilterCard from './components/filter/FilterCard'
-import ModuleList from './components/ModuleList'
-import Footer from './components/Footer'
+import React, { useEffect, useState } from 'react';
+import Header from './components/Header';
+import FilterCard from './components/filter/FilterCard';
+import ModuleList from './components/ModuleList';
+import Footer from './components/Footer';
+import CompareList from './components/compare/CompareList';
 import { Store } from 'react-notifications-component';
-import CompareList from './components/ui/CompareList'
 
 function Search() {
   	const [searchTerm, setSearchTerm] = useState('');	// Search term from filter card
@@ -25,7 +25,7 @@ function Search() {
 				container: "top-right",
 				animationIn: ["animate__animated", "animate__fadeIn"],
 				animationOut: ["animate__animated", "animate__fadeOut"],
-				dismiss: { duration: 5000, onScreen: true }
+				dismiss: { duration: 3000, onScreen: true }
 			});
 			console.log(compareList);
 		} else {
@@ -37,11 +37,28 @@ function Search() {
 				container: "top-right",
 				animationIn: ["animate__animated", "animate__fadeIn"],
 				animationOut: ["animate__animated", "animate__fadeOut"],
-				dismiss: { duration: 5000, onScreen: true }
+				dismiss: { duration: 3000, onScreen: true }
 			});
 		}
 	};
-	
+
+	const onRemove = (HU) => {
+		setcompareList((prevList) => {
+			const updatedList = prevList.filter(item => item?.General?.id !== HU.id);
+			Store.addNotification({
+				title: "Removed",
+				message: `${HU.model} removed from the list`,
+				type: "warning",
+				insert: "top",
+				container: "top-right",
+				animationIn: ["animate__animated", "animate__fadeIn"],
+				animationOut: ["animate__animated", "animate__fadeOut"],
+				dismiss: { duration: 3000, onScreen: true },
+			});
+			return updatedList;
+		});
+	};
+
 	return (
 		<div>
 			<Header />
@@ -52,13 +69,13 @@ function Search() {
 						<div className='col-span-1 md:col-span-4 lg:col-span-1'>
 							<div className='inline-grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-5'>
 								<FilterCard onSearch={setSearchTerm} filter={setFilterData}/>
-								<CompareList list={compareList}/>
+								<CompareList compareList={compareList} itemRemoved={onRemove}/>
 							</div>
 						</div>							
 
 						{/* HU listing (Mounted right)*/}
 						<div className='lg:col-span-3 col-span-4'>
-							<ModuleList searchTerm={searchTerm} filterData={FilterData} compare={addToCompare}/>
+							<ModuleList searchTerm={searchTerm} filterData={FilterData} compareItem={addToCompare}/>
 						</div>
 
 					</div>

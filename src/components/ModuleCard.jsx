@@ -8,16 +8,14 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import {Tooltip,TooltipContent,TooltipProvider,TooltipTrigger} from "@/components/ui/tooltip"
 import { useNavigate } from "react-router-dom";
 
-function ModuleCard({ headunit , compare }) {
+function ModuleCard({ headunit , compareItem }) {
 	const goTo = useNavigate();
-	//selected = false;
 
 	const cardClick = () => {goTo('/specs/'+headunit?.General?.id)}
 
 	const addBtnClick = (event) => {
 		event.stopPropagation();
-		//selected = false; // Toggle
-		compare(headunit);
+		compareItem(headunit);
 	}
 	return (
 		<div onClick={cardClick} className="shadow-md border rounded-xl overflow-hidden cursor-pointer active:scale-100 group">
@@ -60,7 +58,6 @@ function ModuleCard({ headunit , compare }) {
 			</div>
 			</div>
 		</div>
-		// </Link>
 	);
 }
 

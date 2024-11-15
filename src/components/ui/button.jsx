@@ -10,11 +10,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "duration-400 ease-in-out hover:scale-110 mt-2 bg-[#01A981] text-white p-2 rounded-xl focus:ring-0 focus:outline-none focus:border-[#01A981] hover:border-[#01A981] hover:bg-[#01A981]/90 shadow-lg active:scale-95 transition-all",
+          "duration-400 ease-in-out hover:scale-105 mt-2 bg-[#01A981] text-white p-2 rounded-xl focus:ring-0 focus:outline-none focus:border-[#01A981] hover:border-[#01A981] hover:bg-[#01A981]/90 shadow-lg active:scale-95 transition-all",
         utility:
-          "duration-400 ease-in-out hover:scale-110 mt-2 text-white bg-gray-500  p-2 rounded-xl focus:ring-0 focus:outline-none focus:border-gray-500 hover:border-gray-500 hover:bg-gray-500/90 shadow-lg active:scale-95 transition-all",
+          "duration-400 ease-in-out hover:scale-105 mt-2 text-white bg-gray-500  p-2 rounded-xl focus:ring-0 focus:outline-none focus:border-gray-500 hover:border-gray-500 hover:bg-gray-500/90 shadow-lg active:scale-95 transition-all",
         delete:
-          "duration-400 ease-in-out hover:scale-110 mt-2 text-white bg-red-500 p-2 rounded-xl focus:ring-0 focus:outline-none focus:border-red-500 hover:border-red-500 hover:bg-red-500/90 shadow-lg active:scale-95 transition-all",
+          "duration-400 ease-in-out hover:scale-105 mt-2 text-white bg-red-500 p-2 rounded-xl focus:ring-0 focus:outline-none focus:border-red-500 hover:border-red-500 hover:bg-red-500/90 shadow-lg active:scale-95 transition-all",
         destructive:
           "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:

@@ -6,7 +6,7 @@ import * as HUListing from "./../../configs/schema";
 import { desc, eq } from "drizzle-orm";
 import Service from "@/shared/Service";
 
-function ModuleList( { searchTerm , filterData, compare} ) {
+function ModuleList( { searchTerm , filterData, compareItem } ) {
 	const [listings, setListings] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -98,7 +98,7 @@ function ModuleList( { searchTerm , filterData, compare} ) {
 			) : (
 				filterList(listings).map((item, index) => (
 						<div key={index}>
-							<ModuleCard headunit={item} compare={compare}/>
+							<ModuleCard headunit={item} compareItem={compareItem}/>
 						</div>
 					))
 				)
