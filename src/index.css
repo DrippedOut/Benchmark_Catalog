@@ -172,11 +172,11 @@ button:focus-visible {
 }
 
 .scrollbar-custom::-webkit-scrollbar-thumb {
-  background-color: #4a5568; /* Thumb color, similar to Tailwind's gray-700 */
-  border-radius: 4px; /* Rounded corners for the thumb */
+  background-color: #9ca3af; /* gray-400 */
+  border-radius: 8px; /* Rounded corners for the thumb */
   border: 2px solid #f3f4f6; /* Adds padding around the thumb */
 }
 
 .scrollbar-custom::-webkit-scrollbar-thumb:hover {
-  background-color: #2d3748; /* Darker shade on hover */
+  background-color: #6b7280; /* gray-500 shade on hover */
 }
