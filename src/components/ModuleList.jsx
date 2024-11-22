@@ -6,13 +6,21 @@ import * as HUListing from "./../../configs/schema";
 import { desc, eq } from "drizzle-orm";
 import Service from "@/shared/Service";
 
-function ModuleList( { searchTerm , filterData, compareItem } ) {
+function ModuleList( { searchTerm, filterData, compareItem } ) {
 	const [listings, setListings] = useState([]);
+	const [filteredListings, setFilteredListings] = useState([]);
 	const [loading, setLoading] = useState(true);
 
+	console.log(filteredListings)
+
+	// Fetch listings on component mount
+	useEffect(() => {getListing();}, []);
+
+	// Apply filter when searchTerm, filterData, or render changes
 	useEffect(() => {
-		getListing();
-	}, [searchTerm, filterData]);
+		const filtered = filterList();
+		setFilteredListings(filtered);
+	}, [listings, searchTerm, filterData]);
 
 	const getListing = async () => {
 		try {
@@ -46,48 +54,38 @@ function ModuleList( { searchTerm , filterData, compareItem } ) {
 		}
 	};
 
-	const filterList = (listings) => {
-		if (!searchTerm && !filterData) return listings;
-
-		// Filter using filterData
-		if (filterData && (filterData.segment || filterData.manufacturer?.length || filterData.yearFrom || 
-			filterData.yearTo || filterData.screenSizeFrom || filterData.screenSizeTo)) return listings.filter(item => {
-			// HU Data mapped to variables
+	const filterList = () => {		
+		return listings.filter(item => {
 			const HU_segment = item?.General?.carSegment || '';
 			const HU_manufacturer = item?.General?.manufacturer || '';
 			const HU_year = parseInt(item?.General?.year) || 0;
 			const HU_screenSize = parseFloat(item?.General?.displaySize) || 0;
-
-			// filterData destructuring with defaults
-			const segment = filterData?.segment || "";
+	  
+			const segment = filterData?.segment || '';
 			const manufacturer = filterData?.manufacturer || [];
 			const yearFrom = filterData?.yearFrom || 0;
 			const yearTo = filterData?.yearTo || Infinity;
-			const screenSizeFrom = filterData?.screenSizeFrom || 0;
-			const screenSizeTo = filterData?.screenSizeTo || Infinity;
-			
+			const screenSizeFrom = filterData?.displaySizeFrom || 0;
+			const screenSizeTo = filterData?.displaySizeTo || Infinity;
+	  
 			// Filtering conditions
 			const segmentMatch = segment ? HU_segment.includes(segment) : true;
-			const manufacturerMatch = (manufacturer.length > 0) ? manufacturer.includes(HU_manufacturer) : true;
-			const yearMatch = ((!yearFrom || HU_year >= yearFrom) && (!yearTo || HU_year <= yearTo));
-			const screenSizeMatch = ((!screenSizeFrom || HU_screenSize >= screenSizeFrom) && (!screenSizeTo || HU_screenSize <= screenSizeTo));
-			// console.log('Filter: ',segment, manufacturer, yearFrom ,yearTo,screenSizeFrom,screenSizeTo ,'\n' ,
-			// 	'HU: ', HU_segment, HU_manufacturer, HU_year, HU_screenSize, '\n' ,
-			// 	'segmentMatch: ', segmentMatch, '\n' ,
-			// 	'MakerMatch: ', manufacturerMatch, '\n' ,
-			// 	'yearMatch: ', yearMatch, '\n' ,
-			// 	'screenSizeMatch: ', screenSizeMatch);
-			return segmentMatch && manufacturerMatch && yearMatch && screenSizeMatch;
-		});
-
-		// Filter using searchTerm
-		return listings.filter(item => {
-			const model = item?.General?.model?.trim().toLowerCase() || '';
-			const manufacturer = item?.General?.manufacturer?.trim().toLowerCase() || '';
-			// const adas = item?.OtherFunctions?.adas?.trim().toLowerCase(); const adasCheck = (adas === 'yes') ? Object.keys({adas})[0] : 'null'
-			// return model.includes(searchTerm) || manufacturer.includes(searchTerm) || adasCheck.includes(searchTerm);
-			return model.includes(searchTerm) || manufacturer.includes(searchTerm);
-		});
+			const manufacturerMatch = manufacturer.length > 0 ? manufacturer.includes(HU_manufacturer) : true;
+			const yearMatch = HU_year >= yearFrom && HU_year <= yearTo;
+			const screenSizeMatch = HU_screenSize >= screenSizeFrom && HU_screenSize <= screenSizeTo;
+	  
+			// Search term match for model and manufacturer
+			const modelMatch = item?.General?.model?.toLowerCase().includes(searchTerm.toLowerCase());
+			const manufacturerMatchSearch = HU_manufacturer.toLowerCase().includes(searchTerm.toLowerCase());
+	  
+			return (
+			  segmentMatch &&
+			  manufacturerMatch &&
+			  yearMatch &&
+			  screenSizeMatch &&
+			  (modelMatch || manufacturerMatchSearch)
+			);
+		  });
 	}
 	return (
 		<div className="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 p-6">
@@ -96,7 +94,7 @@ function ModuleList( { searchTerm , filterData, compareItem } ) {
   					<AiOutlineLoading3Quarters className="animate-spin text-5xl text-[#01A981]" />
 				</div>
 			) : (
-				filterList(listings).map((item, index) => (
+				filteredListings.map((item, index) => (
 						<div key={index}>
 							<ModuleCard headunit={item} compareItem={compareItem}/>
 						</div>

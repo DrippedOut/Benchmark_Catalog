@@ -818,6 +818,7 @@ const categories = {
             "label": "Equalizer",
             "name": "equalizer",
             "description": "Support equalizer adjustment",
+            "icon": "FaSlidersH"
         },
         {
             "label": "Balance Sound",

@@ -12,9 +12,9 @@ function Header() {
 	const location = useLocation();
 
 	return (
-	<div className="flex justify-between items-center shadow-md p-5 w-full h-[90px]">
+	<div className="flex justify-between items-center shadow-md px-5 w-full h-[90px]">
 		{/* Company Logo */}
-		<img src={logo} alt="PANASONIC AUTOMOTIVE" width={110} height={50} draggable="false" style={{ pointerEvents: "none", userSelect: "none" }}/>
+		<img src={logo} alt="PANASONIC AUTOMOTIVE" width={150} height={50} draggable="false" style={{ pointerEvents: "none", userSelect: "none" }}/>
 
 		{/*Large Screen Nav */}
 		<ul className="hidden lg:flex gap-12">

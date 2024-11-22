@@ -1,32 +1,31 @@
 import React, {useEffect} from 'react'
+import { motion } from "framer-motion";
 import { FaListUl } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 import { Button } from '../ui/button';
 import { Link } from "react-router-dom";
 
 function CompareList( { compareList , itemRemoved } ) {
-    // const goTo = useNavigate();
-
     if (compareList.length < 1) return null;
     
-    useEffect(() => {
-        if (compareList && compareList.length > 0) {
-            console.log(compareList)   
-        }
-    }, [compareList]);
+    useEffect(() => {}, [compareList]);
 
     const removeItem = (item) => {
         itemRemoved(item);
         console.log("REMOVE ", item);
     }
 
-    const onCompare = () => {
-        console.log("onCompare init")
-        goTo('/compare', { state: { compareList } });
-    }
+    const containerVariants = {
+        hidden: { opacity: 0, y: -10 }, // Initial state
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }, // Final state
+    };
 
   return (
-    <div class="h-min p-6 shadow-lg rounded-xl">
+    <motion.div className="h-min p-6 shadow-lg rounded-xl"
+      variants={containerVariants} // Use the animation variants
+      initial="hidden" // Initial animation state
+      animate="visible" // Animation after render
+    >
         {/* <!-- Centering wrapper --> */}
         <div class="relative flex flex-col rounded-xl bg-clip-border text-gray-700">
             <h2 className="flex gap-2 col-span-1 items-center mb-4">
@@ -60,12 +59,12 @@ function CompareList( { compareList , itemRemoved } ) {
                 ))}
                 <div className="flex justify-end pt-10">
                     <Link to="/compare" state={{ compareList }} className='w-full'>
-                        <Button className='w-full' onClick={() => onCompare}>COMPARE</Button>
+                        <Button className='w-full'>COMPARE</Button>
                     </Link>
                 </div>
             </div>
         </div>
-    </div>
+    </motion.div>
   )
 }
 

@@ -27,7 +27,6 @@ function Search() {
 				animationOut: ["animate__animated", "animate__fadeOut"],
 				dismiss: { duration: 3000, onScreen: true }
 			});
-			console.log(compareList);
 		} else {
 			Store.addNotification({
 				title: "Denied",

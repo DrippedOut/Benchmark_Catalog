@@ -11,6 +11,7 @@ import Search from './search'
 import Compare from './compare'
 import Upload from './upload'
 import Specs from './specs'
+import License from './license'
 
 // Router
 const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
     {
         path:'/specs/:id',
         element:<Specs/>
+    },
+    {
+        path:'/license',
+        element:<License/>
     },
 ])
 

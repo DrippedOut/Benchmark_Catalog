@@ -4,7 +4,7 @@ import SpecsContent from './SpecsContent';
 
 function SpecsSheet( { list } ) {
   return (
-    <div className="shadow-lg rounded-xl p-10 border">
+    <div className="shadow-lg rounded-xl p-10 border mt-10">
         <h2 className="text-3xl font-bold mb-10">Specifications</h2>
         <Accordion className="shadow-lg rounded-xl" collapsible="true" type="multiple">
             

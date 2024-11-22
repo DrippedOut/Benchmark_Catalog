@@ -4,7 +4,7 @@ import { Carousel,CarouselContent,CarouselItem,CarouselNext,CarouselPrevious } f
 
 function CompareSlider( {list}) {
     return (
-        <div className="w-[90%] my-10">
+        <div className="w-[90%] mt-10">
             <Carousel opts={{align: "start",}} className="w-full max-w">
             <CarouselContent>
             {list.map((item, index) => (
@@ -22,6 +22,7 @@ function CompareSlider( {list}) {
                             <CardTitle></CardTitle>
                         </CardFooter>
                     </Card>
+                    
                     </div>
                 </CarouselItem>
             ))}
