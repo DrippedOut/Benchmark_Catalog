@@ -9,14 +9,20 @@ import { eq } from "drizzle-orm";
 import SlideShow from "./components/specs/SlideShow";
 import SpecTable from "./components/specs/SpecTable";
 import { Button } from "./components/ui/button";
+import { BiLoaderAlt } from "react-icons/bi";
+import { Store } from 'react-notifications-component';
+import { useAuth } from "@clerk/clerk-react";
 
 function Specs() {
 	const {id}=useParams();
 	const [HUDetail, setHUDetail]=useState();
 	const navigate = useNavigate();
+	const [loader, setLoader] = useState(false);
+	const { orgRole , orgSlug } = useAuth();
 
 	useEffect(()=>{
 		GetHeadUnitDetail();
+		window.scrollTo(0, 0);
 	},[])
 
 	const GetHeadUnitDetail=async ()=>{
@@ -52,41 +58,62 @@ function Specs() {
 	};
 
 	const handleDelete = async () => {
-		console.log("Handling delete")
+		setLoader(true);
+		Store.addNotification({
+			title: "Please Wait...",
+			message: "The headunit data is being deleted.",
+			type: "info",
+			insert: "top",
+			container: "top-right",
+			animationIn: ["animate__animated", "animate__fadeIn"],
+			animationOut: ["animate__animated", "animate__fadeOut"],
+			dismiss: {duration: 5000, onScreen: true}
+		});
 		try {
-			console.log("Entered 'try' block")
-			await db.transaction(async (trx) => {
-				console.log("delete as transaction begins")
-				await trx.delete().from(HUListing.General)				.where(eq(HUListing.General.id, id));
-				await trx.delete().from(HUListing.Tuner)				.where(eq(HUListing.Tuner.id, id));
-				await trx.delete().from(HUListing.USBMediaPlayback)		.where(eq(HUListing.USBMediaPlayback.id, id));
-				await trx.delete().from(HUListing.Bluetooth_Handsfree)	.where(eq(HUListing.Bluetooth_Handsfree.id, id));
-				await trx.delete().from(HUListing.Bluetooth_Media)		.where(eq(HUListing.Bluetooth_Media.id, id));
-				await trx.delete().from(HUListing.Bluetooth_Technology)	.where(eq(HUListing.Bluetooth_Technology.id, id));
-				await trx.delete().from(HUListing.Camera)				.where(eq(HUListing.Camera.id, id));
-				await trx.delete().from(HUListing.VoiceRecognition)		.where(eq(HUListing.VoiceRecognition.id, id));
-				await trx.delete().from(HUListing.Carplay)				.where(eq(HUListing.Carplay.id, id));
-				await trx.delete().from(HUListing.AndroidAuto)			.where(eq(HUListing.AndroidAuto.id, id));
-				await trx.delete().from(HUListing.Weblink)				.where(eq(HUListing.Weblink.id, id));
-				await trx.delete().from(HUListing.OtherConnections)		.where(eq(HUListing.OtherConnections.id, id));
-				await trx.delete().from(HUListing.GeneralSetting)		.where(eq(HUListing.GeneralSetting.id, id));
-				await trx.delete().from(HUListing.DisplaySetting)		.where(eq(HUListing.DisplaySetting.id, id));
-				await trx.delete().from(HUListing.SoundSetting)			.where(eq(HUListing.SoundSetting.id, id));
-				await trx.delete().from(HUListing.OtherFunctions)		.where(eq(HUListing.OtherFunctions.id, id));
-				await trx.delete().from(HUListing.HighlightFunction)	.where(eq(HUListing.HighlightFunction.id, id));
-				for (const image of HUDetail.images) {const filePath = getFilePath(image.imageURL);
-					if (filePath) {await deleteObject(ref(storage, filePath)); 
-						console.log("Removed from Firebase:" , filePath);}
+			console.log("Deleting entries");
+			await db.delete(HUListing.General)				.where(eq(HUListing.General.id, id));
+			await db.delete(HUListing.Tuner)				.where(eq(HUListing.Tuner.id, id));
+			await db.delete(HUListing.USBMediaPlayback)		.where(eq(HUListing.USBMediaPlayback.id, id));
+			await db.delete(HUListing.Bluetooth_Handsfree)	.where(eq(HUListing.Bluetooth_Handsfree.id, id));
+			await db.delete(HUListing.Bluetooth_Media)		.where(eq(HUListing.Bluetooth_Media.id, id));
+			await db.delete(HUListing.Bluetooth_Technology)	.where(eq(HUListing.Bluetooth_Technology.id, id));
+			await db.delete(HUListing.Camera)			 	.where(eq(HUListing.Camera.id, id));
+			await db.delete(HUListing.VoiceRecognition)  	.where(eq(HUListing.VoiceRecognition.id, id));
+			await db.delete(HUListing.Carplay)			 	.where(eq(HUListing.Carplay.id, id));
+			await db.delete(HUListing.AndroidAuto)		 	.where(eq(HUListing.AndroidAuto.id, id));
+			await db.delete(HUListing.Weblink)			 	.where(eq(HUListing.Weblink.id, id));
+			await db.delete(HUListing.OtherConnections)	 	.where(eq(HUListing.OtherConnections.id, id));
+			await db.delete(HUListing.GeneralSetting)  	 	.where(eq(HUListing.GeneralSetting.id, id));
+			await db.delete(HUListing.DisplaySetting) 	 	.where(eq(HUListing.DisplaySetting.id, id));
+			await db.delete(HUListing.SoundSetting)		 	.where(eq(HUListing.SoundSetting.id, id));
+			await db.delete(HUListing.OtherFunctions)    	.where(eq(HUListing.OtherFunctions.id, id));
+			await db.delete(HUListing.HighlightFunction) 	.where(eq(HUListing.HighlightFunction.id, id));
+			await db.delete(HUListing.Media)			 	.where(eq(HUListing.Media.HUListingId, id));
+
+			console.log("All entries deleted");
+
+			// Handle file deletions in Firebase
+			if (HUDetail?.images) {
+				for (const image of HUDetail.images) {
+					const filePath = getFilePath(image.imageURL);
+					if (filePath) {
+						try {
+							await deleteObject(ref(storage, filePath));
+							console.log("Removed from Firebase:", filePath);
+						} catch (error) {
+							console.error("Error deleting file from Firebase:", error);
+						}
+					}
 				}
-				await trx.delete().from(HUListing.Media)				.where(eq(Media.HUListingId, id)); 
-			});
-		  console.log("All related entries deleted successfully.");
-		  navigate("/");
+			}
+		  	navigate("/");
 		} catch (error) {
-		  console.error("Error deleting entries:", error);
-		  //alert("Failed to delete the head unit. Please try again.");
+			console.log(error);
+		  	alert("Failed to delete the head unit. Please try again.");
+		} finally {
+			setLoader(false);
 		}
-	  };
+	};
 	  
 	return (
 		<div>
@@ -94,9 +121,16 @@ function Specs() {
 				<div className="px-5 md:px-20 my-10">
 					<div className="flex justify-between">
 						<h2 className="text-4xl font-bold">{HUDetail?.General?.manufacturer} {HUDetail?.General?.model}</h2>
-						<Link to={'/Upload?mode=edit&id=' + HUDetail?.General?.id}><Button variant="utility">Edit</Button></Link>
-						{/* Delete button */}
-						<Button variant="delete" onClick={handleDelete}>Delete</Button>
+						{orgRole === "org:admin" && orgSlug === 'software' && (
+							<div className="flex gap-4">
+								<Link to={'/Upload?mode=edit&id=' + HUDetail?.General?.id}><Button variant="utility" >EDIT</Button></Link>
+								<Button variant="delete" onClick={handleDelete} disabled={loader}>
+									{loader 
+									? <BiLoaderAlt className="animate-spin text-lg" /> 
+									: 'DELETE'}
+								</Button>
+							</div>
+						)}
 					</div>
 					<div className="md:px-16">
 						<SlideShow img={HUDetail?.images} />

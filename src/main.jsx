@@ -2,8 +2,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { ClerkProvider } from '@clerk/clerk-react'
+import { createBrowserRouter, RouterProvider , useNavigate } from 'react-router-dom'
+import { ClerkProvider , useAuth } from '@clerk/clerk-react'
 import { ReactNotifications } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 // Pages imports
@@ -12,6 +12,17 @@ import Compare from './compare'
 import Upload from './upload'
 import Specs from './specs'
 import License from './license'
+
+// ProtectedRoute Component
+function ProtectedRoute({ children }) {
+    const navigate = useNavigate();
+    const { orgRole, orgSlug } = useAuth();
+    // Redirect unauthorized users to the home page or a login page
+    if (orgRole !== "org:admin" || orgSlug !== "software") {
+        return navigate("/"); // Redirect unauthorized users
+    }
+    return children; // Render the protected route
+}
 
 // Router
 const router = createBrowserRouter([
@@ -25,7 +36,7 @@ const router = createBrowserRouter([
     },
     {
         path:'/upload',
-        element:<Upload/>
+        element:<ProtectedRoute><Upload /></ProtectedRoute>
     },
     {
         path:'/specs/:id',

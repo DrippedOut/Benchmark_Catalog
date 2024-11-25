@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { Button } from "./ui/button";
 import logo from "../assets/logo.png";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import {SignedIn,SignedOut,SignInButton,UserButton} from "@clerk/clerk-react";
 import { IoIosMenu } from "react-icons/io";
 import { Separator } from "./ui/separator";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useAuth } from "@clerk/clerk-react";
 
 function Header() {
 	const [isNavOpen, setNavOpen] = useState(false);
-	const location = useLocation();
+	const { orgRole , orgSlug } = useAuth();
 
 	return (
 	<div className="flex justify-between items-center shadow-md px-5 w-full h-[90px]">
@@ -28,11 +29,13 @@ function Header() {
 				COMPARE
 				</li>
 			</Link>
-			<Link to={"/Upload"} className="text-black">
-				<li className="font-medium text-lg hover:scale-110 transition-all cursor-pointer hover:text-primary">
-				UPLOAD
-				</li>
-			</Link>
+			{orgRole === "org:admin" && orgSlug === 'software' && (
+				<Link to={"/Upload"} className="text-black">
+					<li className="font-medium text-lg hover:scale-110 transition-all cursor-pointer hover:text-primary">
+					UPLOAD
+					</li>
+				</Link>
+			)}
 		</ul>
 
 		{/* Small Screen Nav */}
@@ -62,11 +65,13 @@ function Header() {
 						</li>
 					</Link>
 					<Separator />
-					<Link to={"/Upload"} className="text-black hover:text-black">
-						<li className="p-6 text-lg my-1 font-medium hover:scale-110 transition-all cursor-pointer ">
-						UPLOAD
-						</li>
-					</Link>
+					{orgRole === "org:admin" && orgSlug === 'software' && (
+						<Link to={"/Upload"} className="text-black hover:text-black">
+							<li className="p-6 text-lg my-1 font-medium hover:scale-110 transition-all cursor-pointer ">
+							UPLOAD
+							</li>
+						</Link>
+					)}	
 					</ul>
 				</div>
 				</SheetContent>

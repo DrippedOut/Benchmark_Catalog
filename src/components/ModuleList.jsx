@@ -90,17 +90,23 @@ function ModuleList( { searchTerm, filterData, compareItem } ) {
 	return (
 		<div className="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 p-6">
 			{loading ? (
-				<div className="flex justify-center col-span-3 my-[300px] items-center">
-  					<AiOutlineLoading3Quarters className="animate-spin text-5xl text-[#01A981]" />
+				<div className="flex justify-center col-span-full my-[300px] items-center">
+					<AiOutlineLoading3Quarters className="animate-spin text-5xl text-[#01A981]" />
+				</div>
+			) : filteredListings.length < 1 ? (
+				<div className="flex items-center justify-center col-span-full h-[50vh]">
+					<div className="flex flex-col items-center justify-center text-center">
+						<h2 className="font-light text-3xl text-gray-500">No results found</h2>
+						<span className="text-gray-500 mt-2">Clear the filter and try again</span>
+					</div>
 				</div>
 			) : (
 				filteredListings.map((item, index) => (
-						<div key={index}>
-							<ModuleCard headunit={item} compareItem={compareItem}/>
-						</div>
-					))
-				)
-			}
+					<div key={index}>
+						<ModuleCard headunit={item} compareItem={compareItem} />
+					</div>
+				))
+			)}
 		</div>
   	);
 }

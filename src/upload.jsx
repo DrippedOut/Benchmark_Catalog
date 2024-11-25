@@ -290,7 +290,7 @@ function upload() {
 						<Button disabled={loader} type="submit">
 							{loader 
 							? <BiLoaderAlt className="animate-spin text-lg" /> 
-							: 'Submit'}
+							: 'SUBMIT'}
 						</Button>
 					</div>
 				</form>
