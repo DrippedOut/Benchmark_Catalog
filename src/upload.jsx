@@ -282,7 +282,7 @@ function upload() {
 						<Separator className='my-12' />
 
 						{/* Media upload */}
-						<UploadImages HUinfo={HUinfo?.images} triggerUploadImages={triggerUploadImages} setLoader={(v)=>setLoader(v)}/>
+						<UploadImages HUimages={HUinfo?.images} triggerUploadImages={triggerUploadImages} setLoader={(v)=>setLoader(v)}/>
 					</div>
 					
 					<div className="mt-10 flex justify-end">

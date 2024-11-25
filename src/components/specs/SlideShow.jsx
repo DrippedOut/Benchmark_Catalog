@@ -45,13 +45,14 @@ function SlideShow( {img} ) {
 	};
   return (
         <div className="my-12 relative group w-full h-[700px] border rounded-xl bg-black">
-            {!slides[currentIndex].url.endsWith('.mp4') ? 
+            {slides[currentIndex].url.endsWith('.jpg') ? 
 				(
-				<img src={slides[currentIndex].url} alt="slide" key={currentIndex} className="object-contain w-full h-full rounded-2xl animate__animated animate__fadeIn" /> 
+					<img src={slides[currentIndex].url} alt="slide" key={currentIndex} className="object-contain w-full h-full rounded-2xl animate__animated animate__fadeIn" /> 
 				) 
 				: (
-				<video src={slides[currentIndex].url} key={currentIndex} controls autoPlay muted className="object-contain h-full w-full rounded-2xl animate__animated animate__fadeIn" />
-				)}
+					<video src={slides[currentIndex].url} key={currentIndex} controls autoPlay muted className="object-contain h-full w-full rounded-2xl animate__animated animate__fadeIn" />
+				)
+			}
             {/* Left Arrow */}
 				<div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 rounded-full p-2 bg-black/20 text-white cursor-pointer">
 					<BsChevronCompactLeft onClick={prevSlide} size={40} />
