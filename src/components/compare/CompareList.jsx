@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react'
 import { motion } from "framer-motion";
-import { FaListUl } from "react-icons/fa";
-import { FaTrash } from "react-icons/fa";
+import { FaListUl , FaTrash } from "react-icons/fa";
 import { Button } from '../ui/button';
 import { Link } from "react-router-dom";
 

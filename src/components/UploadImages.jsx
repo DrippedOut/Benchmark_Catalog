@@ -11,9 +11,15 @@ function UploadImages({ triggerUploadImages, setLoader, HUimages }) {
 	const [existingImages, setExistingImages] = useState([]); 	// Store existing images from HUinfo
 	const [removedImages,  setRemovedImages]  = useState([]);	// Store images for deletion
 
+	useEffect(() => {console.log('existing ', existingImages)},[existingImages])
+	useEffect(() => {console.log('selected ', selectedImages)},[selectedImages])
+	useEffect(() => {console.log('removed ', removedImages)},[removedImages])
+
 	// Display existing media of the record that is being editted
 	useEffect(() => {
-		if (HUimages && HUimages.length > 0) setExistingImages(HUimages);
+		if (HUimages != null && HUimages.length > 0) {
+			setExistingImages(HUimages);
+		}
 	}, [HUimages]);
 
 	// Listens for Upload trigger from Upload.jsx
@@ -27,27 +33,28 @@ function UploadImages({ triggerUploadImages, setLoader, HUimages }) {
 		setSelectedImages((prev) => {
 			// Filter out duplicate files
 			const newFiles = files.filter((file) => 
-				!prev.some((prevFile) => 
-					prevFile.name === file.name && prevFile.size === file.size)
+				!prev.some((prevFile) => prevFile.name === file.name 
+					&& prevFile.size === file.size)
 			);
+			console.log(newFiles);
 			return [...prev, ...newFiles];
 		});
+		// Reset the file input value
+		event.target.value = null;
 	};
 
 	const onImageRemove = (image, fromExisting)=>{
-		// Prep existing image for deletion from DB
 		if (fromExisting) {
 			// Filters out 'image' from ExistingImages
-			setExistingImages((prev) => 
-				// Only take prev's items that do not match with 'image'
-				prev.filter((item) => item.name !== image.name || item.size !== image.size));
+			setExistingImages((prev) => prev.filter((item) => item.imageURL !== image.imageURL));
 			// Add 'image' to RemovedImages
 			setRemovedImages((prev) => [...prev, image]);
-		// Remove image from SelectedFile
 		} else {
+			// Remove image from SelectedFile
 			setSelectedImages((prev) => 
 				// Only take prev's items that do not match with 'image'
 				prev.filter((item) => item.name !== image.name || item.size !== image.size));
+			// if (selectedImages.length < 1) setSelectedImages([]);
 		}
 	}
 
@@ -58,9 +65,11 @@ function UploadImages({ triggerUploadImages, setLoader, HUimages }) {
 			if (selectedImages.length > 0) {
 				console.log("Uploading new images:", selectedImages);
 				const uploadPromises = selectedImages.map((file) => {
-					const fileName = `${Date.now()}.jpeg`;
+					// Extract extension and generate a unique file name
+					const extension = `.${file.type.split('/')[1]}`; // Extracts .jpg, .webp, etc.
+					const fileName = `${Date.now()}${extension}`;
 					const storageRef = ref(storage, 'benchmarkCatalog-media/' + fileName);
-					const metaData={contentType:'image/jpeg'}
+					const metaData = {contentType: file.type};
 
 					return uploadBytes(storageRef, file, metaData)
 						.then(() => getDownloadURL(storageRef))
@@ -102,37 +111,49 @@ function UploadImages({ triggerUploadImages, setLoader, HUimages }) {
 		}
 	};
 
-	const DisplayExistingImages = () => {
-		{existingImages.map((image, index) => (
-			image.imageURL.endsWith('.mp4') ? 
-				(
-					<div key={index} className="relative">
-						<IoMdCloseCircle className="absolute m-2 text-lg text-gray-300 hover:text-black" onClick={() => onImageRemove(image, true)} />
-						<img src={image.imageURL} className="w-full h-[130px] shadow-md object-cover rounded-xl"/>
-					</div>
-				) 
-				: (
-					<div key={index} className="relative">
-						<IoMdCloseCircle className="absolute m-2 text-lg text-gray-300 hover:text-black" onClick={() => onImageRemove(image, true)} />
-						<video src={image.imageURL} autoPlay muted className="object-contain h-full w-full rounded-2xl animate__animated animate__fadeIn" />
-					</div>
-				)
-		))}
+	const isImage = (image) => {
+		const formats = ['jpg', 'jpeg', 'png', 'webp']; 
+		const extension = image.imageURL.split('.').pop().split('?')[0].toLowerCase();
+		return formats.includes(extension);
 	};
 
-
+	// For files that have never been in the system
+	const isImageForeign = (image) => {
+		const type = image.type.split('/')[0].toLowerCase();
+		return type === 'image';
+	};
 	return (
 		<div className="shadow-md rounded-xl p-10 my-8 border">
 			<h2 className="font-medium text-xl mb-10">Upload images & videos</h2>
       		<div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5">
-				{DisplayExistingImages()}
+				{/* Render existing images */}
+				{existingImages.map((image, index) => (
+					isImage(image) ? (
+						<div key={index} className="relative">
+							<IoMdCloseCircle className="absolute m-2 text-lg text-gray-300 hover:text-black" onClick={() => onImageRemove(image, true)} />
+							<img src={image.imageURL} className="w-full h-[130px] shadow-md object-cover rounded-xl"/>
+						</div>
+					) : (
+						<div key={index} className="relative">
+							<IoMdCloseCircle className="absolute z-10 m-2 text-lg text-gray-300 hover:text-black" onClick={() => onImageRemove(image, true)} />
+							<video src={image.imageURL} autoPlay muted className="object-contain h-full w-full shadow-md rounded-2xl" />
+						</div>
+					)
+				))}
 
 				{/* Display selected images */}
 				{selectedImages.map((image,index)=>(
-					<div key={index}>
-						<IoMdCloseCircle className="absolute m-2 text-lg text-gray-300 hover:text-black" onClick={()=>onImageRemove(image, false)}/>
-						<img src={URL.createObjectURL(image)} className='w-full h-[130px] shadow-md object-cover rounded-xl' />
-					</div>
+					isImageForeign(image) ? (
+						<div key={index} className="relative">
+							<IoMdCloseCircle className="absolute m-2 text-lg text-gray-300 hover:text-black" onClick={() => onImageRemove(image, false)} />
+							<img src={URL.createObjectURL(image)} className="w-full h-[130px] shadow-md object-cover rounded-xl"/>
+						</div>
+					) : (
+						<div key={index} className="relative">
+							<IoMdCloseCircle className="absolute z-10 m-2 text-lg text-gray-300 hover:text-black" onClick={() => onImageRemove(image, false)} /> 
+							<video src={URL.createObjectURL(image)} autoPlay muted className="object-contain h-full w-full shadow-md rounded-2xl" />
+						</div>
+					)
 				))}
 
 				{/* File Upload Component */}

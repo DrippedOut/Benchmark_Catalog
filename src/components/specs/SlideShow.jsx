@@ -8,12 +8,13 @@ function SlideShow( {img} ) {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [loading, setLoading] = useState(true);
 
+	useEffect(()=>{
+		console.log(slides[currentIndex])
+	},[slides[currentIndex], slides])
+
 	useEffect(() => {
 		if (Array.isArray(img) && img.length > 0) {
-			const formattedSlides = img.map(item => ({
-				url: item.imageURL
-		  	}));
-	
+			const formattedSlides = img.map(item => ({url: item.imageURL}));
 		  // After processing images, set slides and stop loading
 		  setSlides(formattedSlides);
 		  setLoading(false);  // Images are fully loaded
@@ -43,16 +44,20 @@ function SlideShow( {img} ) {
 			</div>
 		);
 	};
+
+	const isImage = () => {
+		const formats = ['jpg', 'jpeg', 'png', 'webp']; 
+		const extension = slides[currentIndex]?.url.split('.').pop().split('?')[0].toLowerCase();
+		return formats.includes(extension);
+	};	
+	
   return (
         <div className="my-12 relative group w-full h-[700px] border rounded-xl bg-black">
-            {slides[currentIndex].url.endsWith('.jpg') ? 
-				(
-					<img src={slides[currentIndex].url} alt="slide" key={currentIndex} className="object-contain w-full h-full rounded-2xl animate__animated animate__fadeIn" /> 
-				) 
-				: (
-					<video src={slides[currentIndex].url} key={currentIndex} controls autoPlay muted className="object-contain h-full w-full rounded-2xl animate__animated animate__fadeIn" />
-				)
-			}
+			{isImage() ? (
+				<img src={slides[currentIndex].url} key={currentIndex} className="object-contain w-full h-full rounded-2xl animate__animated animate__fadeIn" /> 
+			) : (
+				<video src={slides[currentIndex].url} key={currentIndex} controls autoPlay muted className="object-contain h-full w-full rounded-2xl animate__animated animate__fadeIn" />
+			)}
             {/* Left Arrow */}
 				<div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 rounded-full p-2 bg-black/20 text-white cursor-pointer">
 					<BsChevronCompactLeft onClick={prevSlide} size={40} />

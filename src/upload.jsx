@@ -43,12 +43,14 @@ function upload() {
 	const mode = searchParams.get('mode');
 	const recordId = searchParams.get('id');
 
-	useEffect(()=>{
-		if(mode=='edit'){GetHeadUnitDetail()}
-	},[]);
+	useEffect(() => {console.log('loader ', loader);}, [loader]);
 
-	const GetHeadUnitDetail=async ()=>{
-		const result=await db.select().from(HUListing.General)
+	useEffect(() => {console.log(formData);}, [formData]); 
+
+	useEffect(() => {if(mode == 'edit') GetHeadUnitDetail()},[]);
+
+	const GetHeadUnitDetail = async () => {
+		const result = await db.select().from(HUListing.General)
 			.innerJoin(HUListing.Tuner,                eq(recordId, HUListing.Tuner.id))
 			.innerJoin(HUListing.USBMediaPlayback,     eq(recordId, HUListing.USBMediaPlayback.id))
 			.innerJoin(HUListing.Bluetooth_Handsfree,  eq(recordId, HUListing.Bluetooth_Handsfree.id))
@@ -65,9 +67,8 @@ function upload() {
 			.innerJoin(HUListing.SoundSetting,         eq(recordId, HUListing.SoundSetting.id))
 			.innerJoin(HUListing.OtherFunctions,       eq(recordId, HUListing.OtherFunctions.id))
 			.innerJoin(HUListing.HighlightFunction,    eq(recordId, HUListing.HighlightFunction.id))
-			.innerJoin(HUListing.Media,                eq(recordId, HUListing.Media.HUListingId))
+			.leftJoin(HUListing.Media,                eq(recordId, HUListing.Media.HUListingId))
 			.where(eq(recordId, HUListing.General.id));
-
 			const resp=Service.FormatResult(result);
 			setHUinfo(resp[0]);
 	}
@@ -80,10 +81,21 @@ function upload() {
 			[name]: value,
 		},
 		}));
-		console.log(formData)
 	};
 
-	const onSubmit=async(e)=>{
+	// Helper function to wait for the loader to become false
+	const loaderFalse = () => {
+		return new Promise((resolve) => {
+			const interval = setInterval(() => {
+				if (!loader) {
+					clearInterval(interval);
+					resolve();
+				}
+			}, 1000); // Check every 1s
+		});
+	};
+
+	const onSubmit = async (e) => {
 		setLoader(true);
 		e.preventDefault();
 		console.log(formData);
@@ -107,15 +119,10 @@ function upload() {
 							.returning({id:HUListing.General.id});
 							
 						console.log(`${category} is updated`);
-					} else {
-						console.log(`No data to update for ${category}`);
 					}
-				}
-				console.log("Tables updated successfully");
-
-				setTriggerUploadImages(false);
+				};
 				setTriggerUploadImages(recordId);
-
+				await loaderFalse();
 				Store.addNotification({
 					title: "Saved!",
 					message: "The data has been updated successfully.",
@@ -126,8 +133,8 @@ function upload() {
 					animationOut: ["animate__animated", "animate__fadeOut"],
 					dismiss: {duration: 5000, onScreen: true}
 				});
-			} catch (error) {
-				console.error(error);
+			} catch (e) {
+				console.log(e);
 				Store.addNotification({
 					title: "Error!",
 					message: "Failed to upload data. Please try again",
@@ -137,10 +144,8 @@ function upload() {
 					animationIn: ["animate__animated", "animate__fadeIn"],
 					animationOut: ["animate__animated", "animate__fadeOut"],
 					dismiss: {duration: 5000, onScreen: true}
-				  });
-			} finally {
-				setLoader(false);
-		}
+				});
+			}
 		} else {
 			// Upload new head-unit info
 			try {
@@ -156,10 +161,10 @@ function upload() {
 				console.log("Data uploaded successfully");
 
 				if (resultIds.length > 0) {
-					console.log("Array of result IDs = ",resultIds)
+					console.log("Array of result IDs = ",resultIds);
 					setTriggerUploadImages(resultIds[0]);
 				}
-				
+				await loaderFalse();
 				Store.addNotification({
 					title: "Saved!",
 					message: "The data has been uploaded successfully.",
@@ -169,25 +174,23 @@ function upload() {
 					animationIn: ["animate__animated", "animate__fadeIn"],
 					animationOut: ["animate__animated", "animate__fadeOut"],
 					dismiss: {duration: 5000, onScreen: true}
-				  });
+				});
 				
-			} catch (error) {
-				console.error("Error uploading data =>", error);
+			} catch (e) {
+				console.log(e);
 				Store.addNotification({
 					title: "Error!",
 					message: "Failed to upload data. Please try again.",
-					type: "Success",
+					type: "warning",
 					insert: "top",
 					container: "top-right",
 					animationIn: ["animate__animated", "animate__fadeIn"],
 					animationOut: ["animate__animated", "animate__fadeOut"],
 					dismiss: {duration: 5000, onScreen: true}
-				  });
-			} finally {
-				setLoader(false);
+				});
 			}
 		}
-	};
+	}
 
 	return (	
 		<div>
@@ -286,7 +289,6 @@ function upload() {
 					</div>
 					
 					<div className="mt-10 flex justify-end">
-						{/* <Link to={'/specs/'+recordId}><Button className="bg-gray-500">Back</Button></Link> */}
 						<Button disabled={loader} type="submit">
 							{loader 
 							? <BiLoaderAlt className="animate-spin text-lg" /> 
