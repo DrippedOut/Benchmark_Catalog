@@ -1,8 +1,8 @@
-import React, { useState , useEffect} from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
 import logo from "../assets/logo.png";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
-import {SignedIn,SignedOut,SignInButton,UserButton} from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 import { IoIosMenu } from "react-icons/io";
 import { Separator } from "./ui/separator";
 import { Link } from "react-router-dom";
@@ -42,38 +42,35 @@ function Header() {
 		<div className="lg:hidden flex gap-10 justify-between items-center">
 			<Sheet open={isNavOpen} onOpenChange={setNavOpen}>
 				<SheetTrigger asChild>
-				<Button
-					onClick={() => setNavOpen(true)}
-					className="rounded-full p-3 border-slate-400 text-center text-2xl transition-all
-				text-slate-600 hover:bg-slate-100 bg-transparent hover:ring-white hover:border-white focus:outline-none"
-				>
-					<IoIosMenu />
-				</Button>
+					<Button onClick={() => setNavOpen(true)} className="rounded-full p-3 border-slate-400 text-center text-2xl transition-all
+					text-slate-600 hover:bg-slate-100 bg-transparent hover:ring-white hover:border-white focus:outline-none">
+						<IoIosMenu className="text-4xl mx-14"/>
+					</Button>
 				</SheetTrigger>
 				<SheetContent side="right">
-				<div className="p-6">
-					<ul className="gap-8">
-					<Link to={"/"} className="text-black hover:text-black">
-						<li className="p-6 text-lg my-1 font-medium hover:scale-110 transition-all cursor-pointer ">
-						SEARCH
-						</li>
-					</Link>
-					<Separator />
-					<Link to={"/Compare"} className="text-black hover:text-black">
-						<li className="p-6 text-lg my-1 font-medium hover:scale-110 transition-all cursor-pointer ">
-						COMPARE
-						</li>
-					</Link>
-					<Separator />
-					{orgRole === "org:admin" && orgSlug === 'software' && (
-						<Link to={"/Upload"} className="text-black hover:text-black">
+					<div className="p-6">
+						<ul className="gap-8">
+						<Link to={"/"} className="text-black hover:text-black">
 							<li className="p-6 text-lg my-1 font-medium hover:scale-110 transition-all cursor-pointer ">
-							UPLOAD
+							SEARCH
 							</li>
 						</Link>
-					)}	
-					</ul>
-				</div>
+						<Separator />
+						<Link to={"/Compare"} className="text-black hover:text-black">
+							<li className="p-6 text-lg my-1 font-medium hover:scale-110 transition-all cursor-pointer ">
+							COMPARE
+							</li>
+						</Link>
+						<Separator />
+						{orgRole === "org:admin" && orgSlug === 'software' && (
+							<Link to={"/Upload"} className="text-black hover:text-black">
+								<li className="p-6 text-lg my-1 font-medium hover:scale-110 transition-all cursor-pointer ">
+								UPLOAD
+								</li>
+							</Link>
+						)}	
+						</ul>
+					</div>
 				</SheetContent>
 			</Sheet>
 		</div>
@@ -87,7 +84,7 @@ function Header() {
 				</SignInButton>
 			</SignedOut>
 			<SignedIn>
-				<UserButton />
+				<UserButton/>
 			</SignedIn>
 		</div>
 	</div>

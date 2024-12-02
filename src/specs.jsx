@@ -140,7 +140,9 @@ function Specs() {
 						)}
 					</div>
 					<div className="md:px-16">
-						<SlideShow img={HUDetail?.images} />
+					 	<div className="my-12 relative group w-full h-[700px] border rounded-xl bg-black">
+							<SlideShow img={HUDetail?.images} />
+						</div>
 						<SpecTable HUDetail={HUDetail} />
 					</div>
 				</div>

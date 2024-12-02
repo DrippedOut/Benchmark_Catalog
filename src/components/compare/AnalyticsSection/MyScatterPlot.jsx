@@ -5,7 +5,7 @@ function MyScatterPlot({list}) {
     const data = list.reduce((acc, HUDetail) => {
         const groupId = HUDetail.General.model; // Group by manufacturer
         const year = parseInt(HUDetail.General.year, 10); // X-axis
-        const displaySize = parseFloat(HUDetail.General.displaySize.replace('"', '')); // Y-axis (removing the inch symbol)
+        const displaySize = parseFloat(HUDetail?.General?.displaySize?.replace('"', '')); // Y-axis (removing the inch symbol)
 
         // Find or create the group
         let group = acc.find(g => g.id === groupId);
@@ -25,7 +25,7 @@ function MyScatterPlot({list}) {
       <ResponsiveScatterPlotCanvas
         data={data}
         margin={{ top: 30, right: 120, bottom: 65, left: 80 }}
-        xScale={{ type: 'linear', min: 'auto', max: 'auto'}}
+        xScale={{ type: 'linear', min: 'auto', max: 'auto', nice: true}}
         xFormat=">-.0f"
         yScale={{ type: 'linear', min: 'auto', max: 'auto' }}
         yFormat=">-.0f"
@@ -39,6 +39,7 @@ function MyScatterPlot({list}) {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 90,
+            tickValues: 5,
             legend: 'Year',
             legendPosition: 'middle',
             legendOffset: 46,

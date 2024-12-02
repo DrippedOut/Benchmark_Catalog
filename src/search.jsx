@@ -67,8 +67,8 @@ function Search() {
 						{/* Filter (Mounted left)*/}
 						<div className='col-span-1 md:col-span-4 lg:col-span-1'>
 							<div className='inline-grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-5'>
-								<FilterCard onSearch={setSearchTerm} filter={setFilterData}/>
 								<CompareList compareList={compareList} itemRemoved={onRemove}/>
+								<FilterCard onSearch={setSearchTerm} filter={setFilterData}/>
 							</div>
 						</div>							
 

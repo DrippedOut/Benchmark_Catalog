@@ -16,13 +16,13 @@ function Analytics({list}) {
 			<div className='bg-white rounded-xl border p-4 hover:shadow-lg hover:scale-105 transition-all ease-in-out duration-700'>
 				<div className='overflow-auto scrollbar-custom items-center'>
 					<MyScatterPlot list={list}/>
-					<span className='text-base flex justify-center text-gray-500 p-2'>A Timeline of Display Size in Car Infotainment Systems</span>
+					<span className='text-base flex justify-center text-gray-500 p-2'>A Timeline of Display Size</span>
 				</div>
 			</div>
 			<div className='bg-white rounded-xl border p-4 hover:shadow-lg hover:scale-105 transition-all ease-in-out duration-700'>
 				<div className='overflow-auto scrollbar-custom'>
 					<Mypie list={list}/>
-					<span className='text-base flex justify-center text-gray-500 p-2'>Distribution of Display Types in Car Infotainment Systems</span>
+					<span className='text-base flex justify-center text-gray-500 p-2'>Distribution of Display Types</span>
 				</div>
 			</div>
         </div>

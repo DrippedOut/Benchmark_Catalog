@@ -45,7 +45,6 @@ function FilterCard( { onSearch, filter} ) {
 
 	const onApply = (e) => {
 		e.preventDefault();
-		console.log(FilterSearchTerm);
 		if (FilterSearchTerm) {
 			onSearch(FilterSearchTerm)
 		}

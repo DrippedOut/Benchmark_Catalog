@@ -52,7 +52,8 @@ function SlideShow( {img} ) {
 	};	
 	
   return (
-        <div className="my-12 relative group w-full h-[700px] border rounded-xl bg-black">
+        // <div className="my-12 relative group w-full h-[700px] border rounded-xl bg-black">
+		<>
 			{isImage() ? (
 				<img src={slides[currentIndex].url} key={currentIndex} className="object-contain w-full h-full rounded-2xl animate__animated animate__fadeIn" /> 
 			) : (
@@ -67,7 +68,8 @@ function SlideShow( {img} ) {
 				<div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 rounded-full p-2 bg-black/20 text-white cursor-pointer">
 					<BsChevronCompactRight onClick={nextSlide} size={40} />
 				</div>
-        </div>
+		</>
+        // </div>
   )
 }
 
