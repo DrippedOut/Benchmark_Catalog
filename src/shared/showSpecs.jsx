@@ -83,6 +83,12 @@ const categories = {
             "name": "carSegment",
             "description": "Car classification",
             "icon": "FaCarSide"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (General)",
+            "icon": "FaEllipsisH"
         }
     ],
     "Tuner":[
@@ -169,6 +175,12 @@ const categories = {
             "name": "dab",
             "description": "Digital audio broadcasting to improve radio signal and reduce noise",
             "icon": "FaSignal"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Tuner)",
+            "icon": "FaEllipsisH"
         }
     ],
     "USBMediaPlayback":[
@@ -315,6 +327,12 @@ const categories = {
             "name": "fullScreen",
             "description": "Switch to full screen mode on video content",
             "icon": "FaExpand"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (USB Media Playback)",
+            "icon": "FaEllipsisH"
         }
     ],
     "Bluetooth_Handsfree":[
@@ -429,6 +447,12 @@ const categories = {
             "name": "profile",
             "description": "Bluetooth profile",
             "icon": "FaIdBadge"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Bluetooth)",
+            "icon": "FaEllipsisH"
         }
     ],
     "Camera":[
@@ -509,6 +533,12 @@ const categories = {
             "name": "laneWatchCamera",
             "description": "Lane watch camera for monitoring the lane when changing lanes",
             "icon": "FaRoad"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Camera)",
+            "icon": "FaEllipsisH"
         }
     ],
     "VoiceRecognition":[
@@ -547,6 +577,12 @@ const categories = {
             "name": "changeVoiceOutputSound",
             "description": "Change voice output sound",
             "icon": "FaVolumeUp"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Voice Recognition)",
+            "icon": "FaEllipsisH"
         }
     ],
     "Carplay":[
@@ -591,6 +627,12 @@ const categories = {
             "name": "enhanceSiri",
             "description": "Support enhanced Siri features",
             "icon": "FaMicrophoneAlt"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Carplay)",
+            "icon": "FaEllipsisH"
         }
     ],
     "AndroidAuto":[
@@ -641,6 +683,12 @@ const categories = {
             "name": "other",
             "description": "Additional features or options for Android Auto",
             "icon": "FaEllipsisH"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Android Auto)",
+            "icon": "FaEllipsisH"
         }
     ],
     "Weblink":[
@@ -667,6 +715,12 @@ const categories = {
             "name": "separateVolumeControl",
             "description": "Control volume separately for each mode (Call / VR/ Guidance)",
             "icon": "FaVolumeUp"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Weblink)",
+            "icon": "FaEllipsisH"
         }
     ],
     "OtherConnections":[
@@ -711,6 +765,12 @@ const categories = {
             "name": "balanceChecking",
             "description": "E-money card balance check can only be used for Indonesian models.",
             "icon": "FaMoneyBillWave"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Other Connections)",
+            "icon": "FaEllipsisH"
         }
     ],
     "GeneralSetting":[
@@ -743,6 +803,12 @@ const categories = {
             "name": "autoClock",
             "description": "Support automatic time zone",
             "icon": "FaClock"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (General Settings)",
+            "icon": "FaEllipsisH"
         }
     ],
     "DisplaySetting":[
@@ -799,6 +865,12 @@ const categories = {
             "name": "splitScreen",
             "description": "Users can customize function display to view two functions simultaneously on a split screen",
             "icon": "FaColumns"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Display Settings)",
+            "icon": "FaEllipsisH"
         }
     ],
     "SoundSetting":[
@@ -837,6 +909,12 @@ const categories = {
             "name": "separateVolumeControl",
             "description": "Support separate volume setting",
             "icon": "FaVolumeUp"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Sound Settings)",
+            "icon": "FaEllipsisH"
         }
     ],
     "OtherFunctions":[
@@ -899,6 +977,12 @@ const categories = {
             "name": "ota",
             "description": "Over the air software update",
             "icon": "FaCloudDownloadAlt"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Other Functions)",
+            "icon": "FaEllipsisH"
         }
     ],
     "HighlightFunction":[

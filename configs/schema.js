@@ -15,7 +15,8 @@ export const General=pgTable('General',{
     displayFrameRate:varchar('displayFrameRate'),
     resolution:varchar('resolution'),
     aspectRatio:varchar('aspectRatio'),
-    carSegment:varchar('carSegment')
+    carSegment:varchar('carSegment'),
+    other:varchar('other')
 })
 
 export const Tuner = pgTable('Tuner', {
@@ -33,7 +34,8 @@ export const Tuner = pgTable('Tuner', {
     autoPreset: varchar('autoPreset'),
     slideBar: varchar('slideBar'),
     rds: varchar('rds'),
-    dab: varchar('dab')
+    dab: varchar('dab'),
+    other:varchar('other')
 });
 
 export const USBMediaPlayback = pgTable('USBMediaPlayback', {
@@ -61,7 +63,8 @@ export const USBMediaPlayback = pgTable('USBMediaPlayback', {
     random: varchar('random'),
     folderRandom: varchar('folderRandom'),
     wideScreen: varchar('wideScreen'),
-    fullScreen: varchar('fullScreen')
+    fullScreen: varchar('fullScreen'),
+    other:varchar('other')
 });
 
 export const Bluetooth_Handsfree = pgTable('Bluetooth_Handsfree', {
@@ -91,7 +94,8 @@ export const Bluetooth_Media = pgTable('Bluetooth_Media', {
 export const Bluetooth_Technology = pgTable('Bluetooth_Technology', {
     id: serial('id').primaryKey(),
     version: varchar('version'),
-    profile: varchar('profile')
+    profile: varchar('profile'),
+    other:varchar('other')
 });
 
 export const Camera = pgTable('Camera', {
@@ -108,7 +112,8 @@ export const Camera = pgTable('Camera', {
     bsd: varchar('bsd'),
     rcta: varchar('rcta'),
     backSensor: varchar('backSensor'),
-    laneWatchCamera: varchar('laneWatchCamera')
+    laneWatchCamera: varchar('laneWatchCamera'),
+    other:varchar('other')
 });
 
 export const VoiceRecognition = pgTable('VoiceRecognition', {
@@ -118,7 +123,8 @@ export const VoiceRecognition = pgTable('VoiceRecognition', {
     wakeUpWord: varchar('wakeUpWord'),
     defaultLanguage: varchar('defaultLanguage'),
     changeVoiceInputLanguage: varchar('changeVoiceInputLanguage'),
-    changeVoiceOutputSound: varchar('changeVoiceOutputSound')
+    changeVoiceOutputSound: varchar('changeVoiceOutputSound'),
+    other:varchar('other')
 });
 
 export const Carplay = pgTable('Carplay', {
@@ -129,7 +135,8 @@ export const Carplay = pgTable('Carplay', {
     separateVolumeControl: varchar('separateVolumeControl'),
     touchLevel: varchar('touchLevel'),
     entryPoint: varchar('entryPoint'),
-    enhanceSiri: varchar('enhanceSiri')
+    enhanceSiri: varchar('enhanceSiri'),
+    other:varchar('other')
 });
 
 export const AndroidAuto = pgTable('AndroidAuto', {
@@ -149,7 +156,8 @@ export const Weblink = pgTable('Weblink', {
     wire: varchar('wire'),
     wireless: varchar('wireless'),
     application: varchar('application'),
-    separateVolumeControl: varchar('separateVolumeControl')
+    separateVolumeControl: varchar('separateVolumeControl'),
+    other:varchar('other')
 });
 
 export const OtherConnections = pgTable('OtherConnections', {
@@ -160,7 +168,8 @@ export const OtherConnections = pgTable('OtherConnections', {
     miracast: varchar('miracast'),
     browser: varchar('browser'),
     nfc: varchar('nfc'),
-    balanceChecking: varchar('balanceChecking')
+    balanceChecking: varchar('balanceChecking'),
+    other:varchar('other')
 });
 
 export const GeneralSetting = pgTable('GeneralSetting', {
@@ -169,7 +178,8 @@ export const GeneralSetting = pgTable('GeneralSetting', {
     language: varchar('language'),
     personalCenter: varchar('personalCenter'),
     nativeNavigation: varchar('nativeNavigation'),
-    autoClock: varchar('autoClock')
+    autoClock: varchar('autoClock'),
+    other:varchar('other')
 });
 
 export const DisplaySetting = pgTable('DisplaySetting', {
@@ -182,7 +192,8 @@ export const DisplaySetting = pgTable('DisplaySetting', {
     autoDimmer: varchar('autoDimmer'),
     changeableWidget: varchar('changeableWidget'),
     moveableWidget: varchar('moveableWidget'),
-    splitScreen: varchar('splitScreen')
+    splitScreen: varchar('splitScreen'),
+    other:varchar('other')
 });
 
 export const SoundSetting = pgTable('SoundSetting', {
@@ -192,7 +203,8 @@ export const SoundSetting = pgTable('SoundSetting', {
     equalizer: varchar('equalizer'),
     balanceSound: varchar('balanceSound'),
     automaticSoundLevelControl: varchar('automaticSoundLevelControl'),
-    separateVolumeControl: varchar('separateVolumeControl')
+    separateVolumeControl: varchar('separateVolumeControl'),
+    other:varchar('other')
 });
 
 export const OtherFunctions = pgTable('OtherFunctions', {
@@ -206,7 +218,8 @@ export const OtherFunctions = pgTable('OtherFunctions', {
     specialDay: varchar('specialDay'),
     hud: varchar('hud'),
     relaxMode: varchar('relaxMode'),
-    ota: varchar('ota')
+    ota: varchar('ota'),
+    other:varchar('other')
 });
 
 export const HighlightFunction = pgTable('HighlightFunction', {

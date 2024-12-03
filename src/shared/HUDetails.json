@@ -122,6 +122,14 @@
             ],
             "required": false,
             "icon": "FaCarSide"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (General)",
+            "fieldType": "textarea",
+            "required": false,
+            "icon": "FaEllipsisH"
         }
     ],
     "Tuner": [
@@ -276,6 +284,14 @@
             ],
             "required": false,
             "icon": "FaSignal"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Tuner)",
+            "fieldType": "textarea",
+            "required": false,
+            "icon": "FaEllipsisH"
         }
     ],
     "USBMediaPlayback": [
@@ -546,6 +562,14 @@
             ],
             "required": false,
             "icon": "FaExpand"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (USB Media Playback)",
+            "fieldType": "textarea",
+            "required": false,
+            "icon": "FaEllipsisH"
         }
     ],
     "Bluetooth": {
@@ -753,6 +777,14 @@
                 "fieldType": "text",
                 "required": false,
                 "icon": "FaIdBadge"
+            },
+            {
+                "label": "Other",
+                "name": "other",
+                "description": "Additional information (Bluetooth)",
+                "fieldType": "textarea",
+                "required": false,
+                "icon": "FaEllipsisH"
             }
         ]
     },
@@ -912,6 +944,14 @@
             ],
             "required": false,
             "icon": "FaRoad"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Camera)",
+            "fieldType": "textarea",
+            "required": false,
+            "icon": "FaEllipsisH"
         }
     ],
     "VoiceRecognition": [
@@ -978,6 +1018,14 @@
             "fieldType": "text",
             "required": false,
             "icon": "FaVolumeUp"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Voice Recognition)",
+            "fieldType": "textarea",
+            "required": false,
+            "icon": "FaEllipsisH"
         }
     ],
     "Carplay": [
@@ -1052,6 +1100,14 @@
             ],
             "required": false,
             "icon": "FaMicrophoneAlt"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Carplay)",
+            "fieldType": "textarea",
+            "required": false,
+            "icon": "FaEllipsisH"
         }
     ],
     "AndroidAuto": [
@@ -1138,6 +1194,14 @@
             "fieldType": "text",
             "required": false,
             "icon": "FaEllipsisH"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Android Auto)",
+            "fieldType": "textarea",
+            "required": false,
+            "icon": "FaEllipsisH"
         }
     ],
     "Weblink": [
@@ -1184,6 +1248,14 @@
             ],
             "required": false,
             "icon": "FaVolumeUp"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Weblink)",
+            "fieldType": "textarea",
+            "required": false,
+            "icon": "FaEllipsisH"
         }
     ],
     "OtherConnections": [
@@ -1262,6 +1334,14 @@
             ],
             "required": false,
             "icon": "FaMoneyBillWave"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Other Connections)",
+            "fieldType": "textarea",
+            "required": false,
+            "icon": "FaEllipsisH"
         }
     ],
     "GeneralSetting": [
@@ -1320,6 +1400,14 @@
             ],
             "required": false,
             "icon": "FaClock"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (General Settings)",
+            "fieldType": "textarea",
+            "required": false,
+            "icon": "FaEllipsisH"
         }
     ],
     "DisplaySetting": [
@@ -1426,6 +1514,14 @@
             ],
             "required": false,
             "icon": "FaColumns"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Display Settings)",
+            "fieldType": "textarea",
+            "required": false,
+            "icon": "FaEllipsisH"
         }
     ],
     "SoundSetting": [
@@ -1496,6 +1592,14 @@
             "fieldType": "text",
             "required": false,
             "icon": "FaVolumeUp"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Sound Settings)",
+            "fieldType": "textarea",
+            "required": false,
+            "icon": "FaEllipsisH"
         }
     ],
     "OtherFunctions": [
@@ -1618,6 +1722,14 @@
             ],
             "required": false,
             "icon": "FaCloudDownloadAlt"
+        },
+        {
+            "label": "Other",
+            "name": "other",
+            "description": "Additional information (Other Functions)",
+            "fieldType": "textarea",
+            "required": false,
+            "icon": "FaEllipsisH"
         }
     ],
     "HighlightFunction": [

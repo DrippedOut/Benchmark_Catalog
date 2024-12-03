@@ -10,7 +10,7 @@ function CompareSlider( {list}) {
         <CarouselContent>
             {list.map((item, index) => (
             <CarouselItem key={index} className="sm:basis-1/1 md:basis-1/2 lg:basis-1/3">
-                <Card className='bg-white border shadow-lg'>
+                <Card className='bg-white border shadow-lg m-6'>
                     <CardContent className="p-4 group">
                         <div className="relative group w-full h-[250px] rounded-xl bg-white p-1">
                             <SlideShow img={item?.images}/>

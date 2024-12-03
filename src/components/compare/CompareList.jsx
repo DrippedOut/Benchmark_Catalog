@@ -7,8 +7,10 @@ import { Link } from "react-router-dom";
 function CompareList( { compareList , itemRemoved } ) {
     const [show, setShow] = useState(true);
     
-    useEffect(() => {if (compareList.length < 1) setShow(false); 
-        else setShow(true);}, [compareList]);
+    useEffect(() => {
+        if (compareList.length < 1) setShow(false); 
+        else setShow(true);
+    }, [compareList]);
 
     const removeItem = (item) => {
         itemRemoved(item);

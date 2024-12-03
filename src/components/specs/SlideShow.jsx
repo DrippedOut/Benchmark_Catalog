@@ -39,7 +39,7 @@ function SlideShow( {img} ) {
 
 	if (loading || slides.length === 0) {
 		return (
-			<div className="flex justify-center col-span-3 my-[300px] items-center">
+			<div className="flex h-full justify-center align-middle items-center">
 				<AiOutlineLoading3Quarters className="animate-spin text-5xl text-[#01A981]" />
 			</div>
 		);

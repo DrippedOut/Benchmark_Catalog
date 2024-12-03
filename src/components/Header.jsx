@@ -42,8 +42,8 @@ function Header() {
 		<div className="lg:hidden flex gap-10 justify-between items-center">
 			<Sheet open={isNavOpen} onOpenChange={setNavOpen}>
 				<SheetTrigger asChild>
-					<Button onClick={() => setNavOpen(true)} className="rounded-full p-3 border-slate-400 text-center text-2xl transition-all
-					text-slate-600 hover:bg-slate-100 bg-transparent hover:ring-white hover:border-white focus:outline-none">
+					<Button onClick={() => setNavOpen(true)} className="rounded-full p-3 border-gray-400 text-center text-2xl transition-all
+					text-gray-600 hover:bg-gray-50 bg-transparent focus:outline-none">
 						<IoIosMenu className="text-4xl mx-14"/>
 					</Button>
 				</SheetTrigger>
