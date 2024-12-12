@@ -15,7 +15,7 @@ function Footer() {
               </a>
             </p>
             <div className="flex justify-center text-white font-medium sm:justify-start">
-              Courtesy of Software Team (R&D), PANASONIC AUTOMOTIVE SYSTEM ASIA PACIFIC
+              Courtesy of Software Team (R&D), PANASONIC AUTOMOTIVE SYSTEMS ASIA PACIFIC
             </div>
           </div>
         </div>

@@ -111,6 +111,7 @@ function FilterCard( { onSearch, filter} ) {
 							<span className="text-lg font-semibold my-4">Manufacturer</span>
 						</h2>
 						<div className="p-4 flex flex-col max-h-64 rounded-lg border overflow-y-auto scrollbar-custom">
+							{/* To add more brands, adjust FilterDetails.json in shared folder */}
 							{FilterDetails.Manufacturer?.map((option, index) => (			
 								<label><input type="checkbox" className="mr-2" key={index}
 									checked={FilterData.manufacturer.includes(option)}
