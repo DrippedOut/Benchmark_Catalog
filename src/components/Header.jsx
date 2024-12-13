@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useAuth } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+// Component imports
 import { Button } from "./ui/button";
 import logo from "../assets/logo.png";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 import { IoIosMenu } from "react-icons/io";
 import { Separator } from "./ui/separator";
-import { Link } from "react-router-dom";
-import { useAuth } from "@clerk/clerk-react";
 
 function Header() {
 	const [isNavOpen, setNavOpen] = useState(false);
@@ -77,15 +78,20 @@ function Header() {
 
 		{/* Sign-In Button or UserButton */}
 		<div className="flex items-center gap-5">
+
+			{/* This renders when signed out */}
 			<SignedOut>
 				<SignInButton mode="modal" forceRedirectUrl="/" className="bg-white font-medium text-lg hover:scale-110 transition-all cursor-pointer 
 					border-none focus:border-none focus:ring-none ring-none active:ring-none active:outline-none  focus:outline-none">
 					SIGN-IN
 				</SignInButton>
 			</SignedOut>
+
+			{/* This renders when signed in */}
 			<SignedIn>
 				<UserButton/>
 			</SignedIn>
+
 		</div>
 	</div>
   );

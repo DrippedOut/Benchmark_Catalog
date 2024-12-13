@@ -12,10 +12,12 @@ function Compare() {
 	const location = useLocation();
 	const compareList = location.state?.compareList || [];
 
+	// Scroll to top when rendered
 	useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
+	// If no head unit has been selected show info msg
 	if (compareList.length < 1) {
 		return 	<div>
 					<Header />
@@ -38,14 +40,18 @@ function Compare() {
 			<div className="px-10 md:px-20 my-10">
 				<h2 className="text-4xl font-bold">Compare Head-units</h2>
 
+				{/* Model cards slide show */}
 				<div className="flex justify-center">
 					{(compareList.length > 1) ? <CompareSlider list={compareList} />: null}
 				</div>
 
+				{/* Highlight section */}
 				<CompareFeatures list={compareList} />
 
+				{/* Specification section */}
 				<SpecsSheet list={compareList} />
 
+				{/* Analytics section */}
 				<Analytics list={compareList}/>
 			</div>
 			<Footer />

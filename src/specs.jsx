@@ -1,4 +1,4 @@
-import {React,useEffect,useState} from "react";
+import {React , useEffect , useState} from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Link, useParams, useNavigate } from "react-router-dom";
@@ -22,12 +22,15 @@ function Specs() {
 	const [loader, setLoader] = useState(false);
 	const { orgRole , orgSlug } = useAuth();
 
+	// Scroll to top & fetch data from DB
 	useEffect(()=>{
-		GetHeadUnitDetail();
 		window.scrollTo(0, 0);
+		GetHeadUnitDetail();
+		console.log('useAuth ', orgRole, orgSlug)
 	},[])
 
-	const GetHeadUnitDetail=async ()=>{
+	// Fetch data from DB and format it 
+	const GetHeadUnitDetail = async () => {
 		const result=await db.select().from(HUListing.General)
 		.leftJoin(HUListing.Tuner,                eq(id, HUListing.Tuner.id))
 		.leftJoin(HUListing.USBMediaPlayback,     eq(id, HUListing.USBMediaPlayback.id))
@@ -48,11 +51,12 @@ function Specs() {
 		.leftJoin(HUListing.Media,                eq(id, HUListing.Media.HUListingId))
 		.where(eq(id, HUListing.General.id));
 
-		const resp=Service.FormatResult(result);
+		const resp=Service.FormatResult(result);	// Formatting data
 		const filteredArray = resp.filter(Boolean);
 		setHUDetail(filteredArray[0]);
 	}
 
+	// Delete media files on Firebase (Works in conjunction with handleDelete)
 	const deleteFBdata = async () => {
 		if (HUDetail?.images) {
 			for (const image of HUDetail.images) {
@@ -69,8 +73,9 @@ function Specs() {
 		}
 	}
 
+	// Handle delete action
 	const handleDelete = async () => {
-		const isConfirmed = window.confirm("Are you sure you want to delete this data? This action cannot be undone.");
+		const isConfirmed = window.confirm("Are you sure you want to delete this data? This action cannot be undone."); // Confirmation prompt
 		if (isConfirmed) {
 			setLoader(true);
 			Store.addNotification({

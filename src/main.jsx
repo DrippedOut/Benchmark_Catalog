@@ -17,6 +17,7 @@ import License from './license'
 function ProtectedRoute({ children }) {
     const navigate = useNavigate();
     const { orgRole, orgSlug } = useAuth();
+    
     // Redirect unauthorized users to the home page or a login page
     if (orgRole !== "org:admin" || orgSlug !== "software") {
         return navigate("/"); // Redirect unauthorized users

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { db } from "../configs";
+import { db } from "../configs"; 
 import * as HUListing from "../configs/schema";
 import HUDetails from "./shared/HUDetails";
 import { eq } from "drizzle-orm";
@@ -7,11 +7,11 @@ import Service from "./shared/Service";
 import { useSearchParams } from "react-router-dom";
 // Components
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import FieldRenderer from "./components/FieldRenderer";
+import UploadImages from "./components/UploadImages";
 import { Separator } from "./components/ui/separator";
 import { Button } from "./components/ui/button";
-import Footer from "./components/Footer";
-import UploadImages from "./components/UploadImages";
 import { BiLoaderAlt } from "react-icons/bi";
 import { Store } from 'react-notifications-component';
 
@@ -20,6 +20,8 @@ function upload() {
 	const [HUinfo, setHUinfo] = useState();
 	const [loader, setLoader] = useState(false);
 	const [triggerUploadImages , setTriggerUploadImages] = useState();
+
+	// Initailization of form (Empty)
 	const [formData, setFormData] = useState({
 		General: {},
 		Tuner: {},
@@ -43,12 +45,13 @@ function upload() {
 	const mode = searchParams.get('mode');
 	const recordId = searchParams.get('id');
 
-	useEffect(() => {console.log('loader ', loader);}, [loader]);
+	useEffect(() => {console.log('loader ', loader);}, [loader]);	// Logs loader state
 
-	useEffect(() => {console.log(formData);}, [formData]); 
+	useEffect(() => {console.log(formData);}, [formData]); 			// Logs formData when change detected
 
-	useEffect(() => {if(mode == 'edit') GetHeadUnitDetail()},[]);
+	useEffect(() => {if(mode == 'edit') GetHeadUnitDetail()},[]); 	// If in edit mode, pre-fill fields with head unit data
 
+	// Fetch head unit detail
 	const GetHeadUnitDetail = async () => {
 		const result = await db.select().from(HUListing.General)
 			.innerJoin(HUListing.Tuner,                eq(recordId, HUListing.Tuner.id))
@@ -67,12 +70,13 @@ function upload() {
 			.innerJoin(HUListing.SoundSetting,         eq(recordId, HUListing.SoundSetting.id))
 			.innerJoin(HUListing.OtherFunctions,       eq(recordId, HUListing.OtherFunctions.id))
 			.innerJoin(HUListing.HighlightFunction,    eq(recordId, HUListing.HighlightFunction.id))
-			.leftJoin(HUListing.Media,                eq(recordId, HUListing.Media.HUListingId))
+			.leftJoin(HUListing.Media,                 eq(recordId, HUListing.Media.HUListingId))
 			.where(eq(recordId, HUListing.General.id));
 			const resp=Service.FormatResult(result);
 			setHUinfo(resp[0]);
 	}
 
+	// Update form usestate
 	const handleInputChange = (category, name, value) => {
 		setFormData((prevData) => ({
 		...prevData,
@@ -95,6 +99,7 @@ function upload() {
 		});
 	};
 
+	// Handles form submit
 	const onSubmit = async (e) => {
 		setLoader(true);
 		e.preventDefault();
@@ -109,6 +114,7 @@ function upload() {
 			dismiss: {duration: 5000, onScreen: true}
 		  });
 
+		// Enters 'if' block if 'mode' reads 'edit' and updates existing columns
 		if(mode === 'edit'){
 			try {
 				for (const category of Object.keys(formData)) {
@@ -146,8 +152,8 @@ function upload() {
 					dismiss: {duration: 5000, onScreen: true}
 				});
 			}
+		// Upload new head-unit info
 		} else {
-			// Upload new head-unit info
 			try {
 				const resultIds = []; 
 				for (const category of Object.keys(formData)) {
@@ -288,6 +294,7 @@ function upload() {
 						<UploadImages HUimages={HUinfo?.images} triggerUploadImages={triggerUploadImages} setLoader={(v)=>setLoader(v)}/>
 					</div>
 					
+					{/* Submit button */}
 					<div className="mt-10 flex justify-end">
 						<Button disabled={loader} type="submit">
 							{loader 

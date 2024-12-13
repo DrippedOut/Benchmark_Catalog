@@ -11,8 +11,10 @@ function Search() {
 	const [FilterData, setFilterData] = useState({});	// Filter data from filter card
 	const [compareList, setcompareList] = useState([]); // List for Compare feature
 
+	// Re-renders page if value of searchTerm or FilterData changes
 	useEffect(() => {}, [ searchTerm , FilterData ]);
 
+	// Display toast to indicate the result of adding to comparison
 	const addToCompare = (HU) => {
 		const model = HU?.General?.model;
 		if (!compareList.some(item => item.General.id === HU?.General?.id)) {
@@ -41,6 +43,7 @@ function Search() {
 		}
 	};
 
+	// Display toast to notify user that a model has been removed from compare list
 	const onRemove = (HU) => {
 		setcompareList((prevList) => {
 			const updatedList = prevList.filter(item => item?.General?.id !== HU.id);
